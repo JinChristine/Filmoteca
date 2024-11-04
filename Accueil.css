@@ -5,3 +5,12 @@ h1 {
 footer {
     text-align: center;
 }
+
+img {
+    width: 200px;
+    display: block;
+    margin: auto;
+}
+table {
+    border-collapse: collapse;
+}
