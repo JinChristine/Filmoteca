@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html>
-
+<head>
+    <link rel="stylesheet" href="Accueil.css"/>
+</head>
 <body>
     <header>
-        <h2>Liste de films </h1>
+    <nav class="crumbs">
+            <ol>
+              <li class="crumb"><a href="Accueil-Filmoteca.html" class="lien">Accueil</a></li>
+              <li class="crumb"><a href="CRUD.html" class="lien">CRUD</a></li>
+              <li class="crumb"><a href="ListeFilm.php" class="lien">Liste des films</a></li>
+            </ol>
+          </nav>
+        <h1>Liste de films </h1>
     </header>
     <form action="" methode="POST">
         <?php
