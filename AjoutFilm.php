@@ -20,5 +20,7 @@
             <label for="synopsys"> Synopsis: </label>
             <input type="text" name="synopsis" required/>
         </form>
+        <a href = "CRUD.html"><button>Retour</button></a>
+
     </body>
 </html>

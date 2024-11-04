@@ -4,6 +4,6 @@
         $host = "localhost";
         $user = "root";
         $mdp = "";
-        $bdd = "movie";
+        $bdd = "filmoteca";
     ?>
 </html>
