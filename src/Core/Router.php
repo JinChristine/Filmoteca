@@ -27,9 +27,19 @@ class Router
         if (array_key_exists($uri, $routes)) {
             $controllerName = 'App\\Controller\\' . $routes[$uri];
             $controller = new $controllerName();
-
+            
+            switch($queryParams){
+                case "":
+                $controller->read($queryParams);
+                case "":
+                $controller->creat($queryParams);
+                case "":
+                $controller->delete($queryParams);
+                case "":
+                $controller->update($queryParams);
+            }
             // Appelle une méthode spécifique avec les paramètres de la requête (par exemple, index())
-            $controller->index($queryParams); // On passe les paramètres à la méthode index()
+            //$controller->index($queryParams); // On passe les paramètres à la méthode index()
         } else {
             // Page non trouvée
             echo "404 Not Found";
