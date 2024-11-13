@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
+/* //Méthode 1: en PHP
 // $_SERVER['REQUEST_URI']: le chemin de l'URL
 $uri = $_SERVER['REQUEST_URI'];
 
@@ -12,7 +13,13 @@ if (in_array($uri, $pagesAutorisees)) {
 } else {
     include '../Accueil-Filmoteca.php';
 }
+*/
 
+//Méthode 2: en POO
+require("./../Routeur.php");
+$objet = new Routeur();
+$objetView = $objet->route();
+echo $objetView ;
 ?>
 
 </html>
