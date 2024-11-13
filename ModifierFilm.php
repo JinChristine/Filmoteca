@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <body>
-    <a href = "CRUD.html"><button>Retour</button></a>
+    <a href = "CRUD.php"><button>Retour</button></a>
 
     </body>
     <footer>

@@ -9,8 +9,8 @@
     <header>
         <nav class="crumbs">
             <ol>
-                <li class="crumb"><a href="Accueil-Filmoteca.html" class="lien">Accueil</a></li>
-                <li class="crumb"><a href="CRUD.html" class="lien">CRUD</a></li>
+                <li class="crumb"><a href="Accueil-Filmoteca.php" class="lien">Accueil</a></li>
+                <li class="crumb"><a href="CRUD.php" class="lien">CRUD</a></li>
                 <li class="crumb"><a href="ListeFilm.php" class="lien">Liste des films</a></li>
             </ol>
         </nav>
@@ -53,7 +53,7 @@
     ?>
 
 
-    <a href="CRUD.html"><button>Retour</button></a>
+    <a href="CRUD.php"><button>Retour</button></a>
 </body>
 <footer>
     <p>Filmoteca | 2024</p>
