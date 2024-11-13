@@ -19,6 +19,12 @@ if (in_array($uri, $pagesAutorisees)) {
 require("./../Routeur.php");
 $objet = new Routeur();
 $objetView = $objet->route();
+$pagesAutorisees = ['Accueil-Filmoteca', 'CRUD', 'ListeFilm'];
+if (in_array($ojetView, $pagesAutorisees)) {
+    include "./../$objetView.php";
+} else {
+    include '../Accueil-Filmoteca.php';
+}
 echo $objetView ;
 ?>
 

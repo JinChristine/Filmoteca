@@ -6,7 +6,8 @@ class Routeur {
     private $url; 
     public function route(){
         $temp = trim($_SERVER['REQUEST_URI'], "/");
-        return var_dump($temp);
+        echo var_dump($temp);
+        return $temp;
     }
 }
 ?>
