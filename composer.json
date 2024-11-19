@@ -2,15 +2,15 @@
     "name": "filmoteca/filmoteca",
     "description": "Filmoteca project",
     "type": "project",
-    "authors": [
-        {
-            "name": "Yassin HAMMOU OUALI"
-        }
-    ],
-    "require": {},
     "autoload": {
         "psr-4": {
             "App\\": "src/"
         }
-    }
+    },
+    "authors": [
+        {
+            "name": "Jin Christine"
+        }
+    ],
+    "require": {}
 }
