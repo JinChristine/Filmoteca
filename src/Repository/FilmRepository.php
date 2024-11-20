@@ -24,11 +24,15 @@ class FilmRepository
     public function addFilm(Film $film)
     {  
     }
-
+*/
     // Lire un film
     public function getFilm(int $id)
     {
-        
+        $query = 'SELECT * FROM film WHERE id=$id';
+        $stmt = $this->db->query($query);
+
+        $film = $stmt->fetchAll();
+        return $film;
     }
     // Mettre à jour un film
     public function updateFilm(int $id, string $title, string $year, string $genre, string $synopsis, string $director, string $created_at)
@@ -43,7 +47,6 @@ class FilmRepository
     public function deleteFilm(int $id)
     {
     }
-*/
     
 }
 ?>

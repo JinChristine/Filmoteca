@@ -12,13 +12,25 @@ class FilmController // Intermédiaire entre le modèle et la vue
     {
         $filmRepository = new FilmRepository();
         $films = $filmRepository->findAll();
-        $allFilms = var_dump($films);
-        $tab = new array();
+        /*
+        $filmEntities = [];
         foreach($allFilms as $film){
-            $tab['']=
-        }
-        header('Content-type: application/json');
-        echo json_encode($films);
+            $filmEntity = new Film();
+            $filmEntity->setId($film['id']);
+            $filmEntity->setTitle($film['title']);
+            $filmEntity->setYear($film['year']);
+            $filmEntity->setDirector($film['director']);
+            $filmEntity->setSynopsis($film['synopsis']);
+            $filmEntity->setCreated($film['created_at']);
+            $filmEntity->setType($film['type']);
+            $filmEntity->setDeleted($film['deleted_at']);
+            $filmEntity->setUpdated($film{'updated_at'});
+        */
+        
+        //dd($filmEntities);
+        /*header('Content-type: application/json');
+        echo json_encode($films);*/
+        
     }
 
     public function create(array $params)
@@ -37,21 +49,15 @@ class FilmController // Intermédiaire entre le modèle et la vue
         echo "Création d'un film";
     }
 
-    public function read(array $params)
+    public function read(int $id)
     {
-        /*
-        $id = (int) $params['id'];
-        if (!isset($id)){
-            echo "Film non trouvée";
-            return;
-        }            
-        else {
-            $film = $this->filmModel.getFilm($id);
-            echo "Lecture du film".$params['title'];
-        }
-        */
+        $filmRepository = new FilmRepository();
+        $film = $filmRepository->getFilm($id);
+        dd($film);
         echo "Lecture d'un film";
     }
+
+
     public function update(array $params)
     {
         /*
