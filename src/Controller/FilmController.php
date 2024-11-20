@@ -49,10 +49,10 @@ class FilmController // Intermédiaire entre le modèle et la vue
         echo "Création d'un film";
     }
 
-    public function read(int $id)
+    public function read(array $params)
     {
         $filmRepository = new FilmRepository();
-        $film = $filmRepository->getFilm($id);
+        $film = $filmRepository->getFilm((int)$params['id']);
         dd($film);
         echo "Lecture d'un film";
     }
