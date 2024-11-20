@@ -1,10 +1,9 @@
 <?php
 namespace App\Repository;
-use App\Service\EntityMapper;
 use App\Entity\Film;
 use App\Core\DatabaseConnection;
 
-public class FilmRepository
+class FilmRepository
 {
     private \PDO $db;
 
@@ -17,7 +16,8 @@ public class FilmRepository
         $query = 'SELECT * FROM film';
         $stmt = $this->db->query($query);
 
-        return $stmt->fetchAll();
+        $films = $stmt->fetchAll();
+        return $films;
     }
 /*
     // Ajouter un film

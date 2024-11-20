@@ -12,7 +12,11 @@ class FilmController // Intermédiaire entre le modèle et la vue
     {
         $filmRepository = new FilmRepository();
         $films = $filmRepository->findAll();
-        
+        $allFilms = var_dump($films);
+        $tab = new array();
+        foreach($allFilms as $film){
+            $tab['']=
+        }
         header('Content-type: application/json');
         echo json_encode($films);
     }
