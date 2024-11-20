@@ -12,8 +12,9 @@ class Film
     private string $genre;
     private string $synopsis;
     private string $deleted_at;
+    private string $updated_at;
 
-    public function __construct(int $id, string $title, string $director, string $genre, string $year, string $synopsis, string $created_at)
+    public function __construct(int $id, string $title, string $director, string $genre, string $year, string $synopsis, string $created_at, string $deleted_at, string $updated_at)
     {
         $this->id = $id;
         $this->title = $title;
@@ -23,6 +24,7 @@ class Film
         $this->genre = $genre;
         $this->created_at = $created_at;
         $this->deleted_at = $created_at;
+        $this->updated_at = $updated_at;
 
     }
 
@@ -65,7 +67,10 @@ class Film
     {
         return $this->deleted_at;
     }
-
+    public function getUpdated()
+    {
+        return $this->updated_at;
+    }
 
     // Setters
     public function setTitle(string $title)
@@ -100,5 +105,10 @@ class Film
     public function setDeleted(string $deleted_at)
     {
         $this->deleted_at = $deleted_at;
+    }
+
+    public function setUpdated(string $updated_at)
+    {
+        $this->updated_at = $updated_at;
     }
 }

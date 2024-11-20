@@ -1,24 +1,30 @@
 <?php
 namespace App\Repository;
+use App\Core\DatabaseConnection;
 
 public class FilmRepository
 {
-
-    $dsn = "mysql:dbname=filmoteca;host=127.0.0.1";
-    $user = "filmoteca_user";
-    $password = "filmoteca_password";
-    $dbh= new PDO($dsn, $user, $password);
+    public function __contruct (){
+        $this->db = DatabaseConnection::getConnection();
+    }
 
     // Ajouter un film
     public function addFilm(Film $film)
     {
         $sql = query("INSERT INTO film() VALUES ()");
-        $sth = $dbh->exec($sql);
+        $sth = $db->exec($sql);
     }
     // Lire un film
     public function getFilm(int $id)
     {
-        $sql = 'SELECT * FROM film';
+        
+    }
+    // Mettre à jour un film
+    public function updateFilm(int $id, string $title, string $year, string $genre, string $synopsis, string $director, string $created_at)
+    {
+        
+        $sql = 'UPDATE film SET title=$title, year=$year, type=$type, synopsis=$id, director=$director, created_at=$created_at, updated_at=$date';
+
         foreach($dbh->query($sql) as $row)
         {
             if ($row['id'] == $id){
@@ -26,12 +32,8 @@ public class FilmRepository
             }
         }
         return null;
-    }
-    // Mettre à jour un film
-    public function updateFilm(int $id, string $title, string $year, string $genre, string $synopsis, string $director, string $created_at)
-    {
-        
-        $sql = 'UPDATE film SET '
+
+
         foreach($this->films as $film)
         {
             if ($film.getId() == $id){
