@@ -2,6 +2,7 @@
 namespace App\Repository;
 use App\Entity\Film;
 use App\Core\DatabaseConnection;
+use App\Service\EntityMapper;
 
 class FilmRepository
 {
@@ -26,13 +27,13 @@ class FilmRepository
     }
 */
     // Lire un film
-    public function getFilm(int $id)
+    public function find(int $id): Film
     {
         $query = 'SELECT * FROM film WHERE id=$id';
         $stmt = $this->db->query($query);
 
-        $film = $stmt->fetchAll();
-        return $film;
+        $film = $stmt->();
+        return this->entityMapperService->mapToEntities($film, Film::class);
     }
     // Mettre à jour un film
     public function updateFilm(int $id, string $title, string $year, string $genre, string $synopsis, string $director, string $created_at)

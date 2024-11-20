@@ -52,9 +52,8 @@ class FilmController // Intermédiaire entre le modèle et la vue
     public function read(array $params)
     {
         $filmRepository = new FilmRepository();
-        $film = $filmRepository->getFilm((int)$params['id']);
+        $film = $filmRepository->find((int)$params['id']);
         dd($film);
-        echo "Lecture d'un film";
     }
 
 
