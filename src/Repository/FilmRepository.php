@@ -1,5 +1,7 @@
 <?php
 namespace App\Repository;
+use App\Service\EntityMapper;
+use App\Entity\Film;
 use App\Core\DatabaseConnection;
 
 public class FilmRepository

@@ -1,7 +1,7 @@
 <?php
 namespace App\Core;
 
-public DatabaseConnection
+class DatabaseConnection
 {
     private static ? \PDO $connection = null;
 
@@ -10,6 +10,29 @@ public DatabaseConnection
     private const DB_USER = "filmoteca_user";
     private $password = "filmoteca_password";
     private $dbh;
+
+     /**
+     * Get the PDO connection instance
+     *
+     * @return \PDO
+     * @throws \PDOException
+     */
+    public static function getConnection(): \PDO
+    {
+        if (self::$connection === null) {
+            try {
+                $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s;charset=utf8mb4', self::DB_HOST, self::DB_PORT, self::DB_NAME);
+
+                self::$connection = new \PDO($dsn, self::DB_USER, self::DB_PASSWORD);
+                self::$connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+                self::$connection->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
+            } catch (\PDOException $exception) {
+                throw new \PDOException('Database connection error: ' . $exception->getMessage());
+            }
+        }
+
+        return self::$connection;
+    }
  
 }
 

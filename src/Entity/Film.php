@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Entity;
 
@@ -6,15 +7,16 @@ class Film
 {
     private int $id;
     private string $title;
-    private string $director;
-    private int $year;
-    private \DateTime $created_at;
+    private ?int $year = null;
+    private string $type;
+    private ?string $synopsis = null;
+    private ?string $director = null;
     private string $genre;
-    private string $synopsis;
-    private \DateTime $deleted_at;
-    private \DateTime $updated_at;
+    private \DateTime $created_at;
+    private ?\DateTime $deleted_at = null;
+    private ?\DateTime $updated_at = null;
 
-    public function __construct(int $id, string $title, string $director, string $genre, string $year, string $synopsis, string $created_at, string $deleted_at, string $updated_at)
+    public function __construct(int $id, string $title, string $director, string $genre, int $year, string $synopsis, string $type, \DateTime $created_at, \DateTime $deleted_at, \DateTime $updated_at)
     {
         $this->id = $id;
         $this->title = $title;
@@ -22,6 +24,7 @@ class Film
         $this->year = $year;
         $this->synopsis = $synopsis;
         $this->genre = $genre;
+        $this->type = $type;
         $this->created_at = $created_at;
         $this->deleted_at = $created_at;
         $this->updated_at = $updated_at;
@@ -102,19 +105,19 @@ class Film
         return $this;
     }
     
-    public function setCreated(string $created_at): self
+    public function setCreated(\DateTime $created_at): self
     {
         $this->created_at = $created_at;
         return $this;
     }
 
-    public function setDeleted(string $deleted_at): self
+    public function setDeleted(?\DateTime $deleted_at): self
     {
         $this->deleted_at = $deleted_at;
         return $this;
     }
 
-    public function setUpdated(string $updated_at): self
+    public function setUpdated(?\DateTime $updated_at): self
     {
         $this->updated_at = $updated_at;
         return $this;
