@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,16 +12,17 @@
     </header>
 
     <?php
-        namespace App\views;
-        
-    findAll()
+        echo "<table border=1>";
+        echo "<tr><th>Title</th><th>Year</th><th>Type</th><th>Director</th><th>Synopsis</th><th>CreatedAt</th><th>UpdatedAt</th><th>DeletedAt</th></tr>";
+        echo "<tr><td>". $film->getTitle()."</td><td>". $film->getYear()."</td><td>". $film->getType() ."</td><td>". $film->getDirector() ."</td><td>". $film->getSynopsis()."</td><td>". $film->getCreatedAt()->format('Y-m-d H:i:s')."</td><td>". $film->getUpdatedAt()->format('Y-m-d H:i:s')."</td>";
+        $deteted= $film->getDeletedAt();
+        if($deteted == null){
+            echo "<td></td>";
+        }
+        else {
+            echo "<td>".$deteted."</td>";
+        }
+        echo "</tr></table>";
     ?>
-    <table>
-        <tr>
-            <th></th>
-        </tr>
-    </table>
 </body>
-
-
 </html>

@@ -30,7 +30,8 @@ class FilmController // Intermédiaire entre le modèle et la vue
         //dd($filmEntities);
         /*header('Content-type: application/json');
         echo json_encode($films);*/
-        dd($films);
+        require __DIR__ . '/../views/listView.php'; // inclure le contenu de listView ici
+        
     }
 
     public function create(array $params)
@@ -53,7 +54,7 @@ class FilmController // Intermédiaire entre le modèle et la vue
     {
         $filmRepository = new FilmRepository();
         $film = $filmRepository->find((int)$params['id']);
-        dd($film);
+        require __DIR__ .'/../views/readView.php';
     }
 
 
