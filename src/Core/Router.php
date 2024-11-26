@@ -5,7 +5,7 @@ namespace App\Core;
 
 class Router
 {
-    public function route(): void 
+    public function route()
     {
         // Récupère l'URL demandée (sans le domaine et la racine)
         $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
@@ -39,7 +39,7 @@ class Router
             // Vérifie si la méthode existe dans le contrôleur
             if (method_exists($controller, $action)){
                 $queryParams = $_GET;         // Récupère les paramètres de la query string (comme ?id=12&name=Inception)
-                $controller ->$action($queryParams); // Appelle la méthode dynamique
+                return $controller->$action($queryParams); // Appelle la méthode dynamique
             } else {
                 echo "Action '$action' not found in $controllerName";
             }
