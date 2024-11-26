@@ -1,27 +1,33 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Service;
 
 class EntityMapper
 {
     public function mapToEntity(array $data, string $entityClass)
     {
-        // Créer une instance de l'entité
-        $entity = new $entityClass();
+       // Créer une instance de l'entité
+       $entity = new $entityClass();
 
-        // Pour chaque champ de l'entité, assigner la valeur correspondante dans $data
-        foreach ($data as $key => $value) {
-            $setterKey = str_replace('_', '', ucwords($key, '_'));
-            $setter = 'set' . $setterKey;
-            dump($setter);
+       // Pour chaque champ de l'entité, assigner la valeur correspondante dans $data
+       foreach ($data as $key => $value) {
+           $setterKey = str_replace('_', '', ucwords($key, '_'));
+           $setter = 'set' . $setterKey;
 
-            // Si le setter existe, on l'appelle
-            if (method_exists($entity, $setter)) {
-                $entity->$setter($value);
-            }
-        }die;
+           // Si le champ contient "at" (ex : created_at), convertir en DateTime
+           if (str_contains($key, '_at') && null !== $value) {
+               $value = new \DateTime($value);
+           }
 
-        return $entity;
+           // Si le setter existe, on l'appelle
+           if (method_exists($entity, $setter)) {
+               $entity->$setter($value);
+           }
+       }
+
+       return $entity;
     }
 
     /**

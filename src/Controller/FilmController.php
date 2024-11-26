@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Repository\FilmRepository;
+use App\Entity\Film;
 
 class FilmController // Intermédiaire entre le modèle et la vue
 {
@@ -21,16 +22,15 @@ class FilmController // Intermédiaire entre le modèle et la vue
             $filmEntity->setYear($film['year']);
             $filmEntity->setDirector($film['director']);
             $filmEntity->setSynopsis($film['synopsis']);
-            $filmEntity->setCreated($film['created_at']);
+            $filmEntity->setCreatedAt($film['created_at']);
             $filmEntity->setType($film['type']);
-            $filmEntity->setDeleted($film['deleted_at']);
-            $filmEntity->setUpdated($film{'updated_at'});
+            $filmEntity->setUpdatedAt($film{'updated_at'});
         */
         
         //dd($filmEntities);
         /*header('Content-type: application/json');
         echo json_encode($films);*/
-        
+        dd($films);
     }
 
     public function create(array $params)

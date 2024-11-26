@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Entity;
@@ -12,9 +13,9 @@ class Film
     private ?string $synopsis = null;
     private ?string $director = null;
     private string $genre;
-    private \DateTime $created_at;
-    private ?\DateTime $deleted_at = null;
-    private ?\DateTime $updated_at = null;
+    private \DateTime $createdAt;
+    private ?\DateTime $deletedAt = null;
+    private ?\DateTime $updatedAt = null;
 
     public function __construct(int $id, string $title, string $director, string $genre, int $year, string $synopsis, string $type, \DateTime $created_at, \DateTime $deleted_at, \DateTime $updated_at)
     {
@@ -61,18 +62,18 @@ class Film
     {
         return $this->genre;
     }
-    public function getCreated(): \DateTime
+    public function getCreatedAt(): \DateTime
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function getDeleted(): \DateTime
+    public function getDeletedAy(): ?\DateTime
     {
-        return $this->deleted_at;
+        return $this->deletedAt;
     }
-    public function getUpdated(): \DateTime
+    public function getUpdatedAt(): ?\DateTime
     {
-        return $this->updated_at;
+        return $this->updatedAt;
     }
 
     // Setters
@@ -105,21 +106,21 @@ class Film
         return $this;
     }
     
-    public function setCreated(\DateTime $created_at): self
+    public function setCreatedAt(\DateTime $createdAt): self
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
         return $this;
     }
 
-    public function setDeleted(?\DateTime $deleted_at): self
+    public function setDeletedAt(?\DateTime $deletedAt): self
     {
-        $this->deleted_at = $deleted_at;
+        $this->deletedAt = $deletedAt;
         return $this;
     }
 
-    public function setUpdated(?\DateTime $updated_at): self
+    public function setUpdatedAt(?\DateTime $updatedAt): self
     {
-        $this->updated_at = $updated_at;
+        $this->updatedAt = $updatedAt;
         return $this;
     }
 }
