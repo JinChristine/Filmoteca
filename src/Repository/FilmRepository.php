@@ -12,7 +12,7 @@ class FilmRepository
     private \PDO $db; // Instance de connexion à la base de données
     private EntityMapper $entityMapperService; // Service pour mapper les entités
 
-    public function __contruct (){
+    public function __construct (){
        // Initialise la connexion à la base de données en utilisant DatabaseConnection
        $this->db = DatabaseConnection::getConnection();
        // Initialise le service de mappage des entités

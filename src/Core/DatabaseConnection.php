@@ -6,7 +6,7 @@ namespace App\Core;
 
 class DatabaseConnection
 {
-    private static ? \PDO $connection = null;
+    private static ?\PDO $connection = null;
 
     private const DB_HOST = 'filmoteca_db'; // Name of the Docker container or the service id in the docker-compose.yml file
     private const DB_PORT = 3306;
