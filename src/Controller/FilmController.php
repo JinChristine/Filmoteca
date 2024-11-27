@@ -39,7 +39,7 @@ class FilmController extends TwigEnvironment// Intermédiaire entre le modèle e
         echo $this->twig->render('films.html.twig', ['films'=>$films]);
     }
 
-    public function create(array $params)
+    public function create(): void
     {
         /*
         if (!isset($params['id']) && !isset($params['title']) && !isset($params['year']) && !isset($params['genre']) && !isset($params["synopsis"]) && !isset($params['director']) && !isset($params['created_at'])){
@@ -51,8 +51,21 @@ class FilmController extends TwigEnvironment// Intermédiaire entre le modèle e
             echo "Création du film" . $params['title'];
 
         }
-        */
-        echo "Création d'un film";
+        */        
+        if (isset($_POST['title']) && isset($_POST['type']) && isset($_POST['year']) && isset($_POST['synopsis']) && isset($_POST['director'])) {
+            $newFilm = new Film();
+            $newFilm->setTitle($_POST['title']);
+            $newFilm->setType($_POST['type']);
+            $newFilm->setYear($_POST['year']);
+            $newFilm->setSynopsis($_POST['synopsis']);
+            $newFilm->setDirector($_POST['director']);
+            $newFilm->setCreatedAt(new \DateTime());
+            echo "z";
+        $filmRepository = new FilmRepository();
+        $film = $filmRepository->addFilm($newFilm);
+        }
+        echo $this->twig->render('createFilm.html.twig');
+
     }
 
     public function read(array $params): void

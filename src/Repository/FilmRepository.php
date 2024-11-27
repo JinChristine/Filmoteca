@@ -33,12 +33,22 @@ class FilmRepository
         // Utilise le service de mappage pour convertir les résultats en objets Film
         return $this->entityMapperService->mapToEntities($films, Film::class);
         }
-/*
+
     // Ajouter un film
-    public function addFilm(Film $film)
+    public function addFilm(Film $film): void
     {  
+            $query = "INSERT INTO movie(title, year, synopsis, director, created_at, deleted_at, genre) VALUES ('$titre', '$annee', '$synopsis', '$director', '$created_at', '$deleted_at', '$genre')";
+            $result = $$this->db->prepare($query);
+            if ($result == true){
+                echo "Film bien ajouté";
+            }
+            else {
+                echo "erreur d'ajout";
+            }
+        }
+
     }
-*/
+
     // Méthode pour récupérer un film par son identifiant
     public function find(int $id): Film
     {
