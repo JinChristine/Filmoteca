@@ -47,7 +47,6 @@ class FilmRepository
             }
         }
 
-    }
 
     // Méthode pour récupérer un film par son identifiant
     public function find(int $id): Film

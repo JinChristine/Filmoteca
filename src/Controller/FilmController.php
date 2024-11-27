@@ -51,7 +51,8 @@ class FilmController extends TwigEnvironment// Intermédiaire entre le modèle e
             echo "Création du film" . $params['title'];
 
         }
-        */        
+        */
+        var_dump($_POST['title']);        
         if (isset($_POST['title']) && isset($_POST['type']) && isset($_POST['year']) && isset($_POST['synopsis']) && isset($_POST['director'])) {
             $newFilm = new Film();
             $newFilm->setTitle($_POST['title']);
