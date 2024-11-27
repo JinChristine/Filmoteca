@@ -39,7 +39,7 @@ class Router
             // Vérifie si la méthode existe dans le contrôleur
             if (method_exists($controller, $action)){
                 $queryParams = $_GET;         // Récupère les paramètres de la query string (comme ?id=12&name=Inception)
-                return $controller->$action($queryParams); // Appelle la méthode dynamique
+                $controller->$action($queryParams); // Appelle la méthode dynamique
             } else {
                 echo "Action '$action' not found in $controllerName";
             }

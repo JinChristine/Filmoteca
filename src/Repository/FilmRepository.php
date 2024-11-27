@@ -30,9 +30,9 @@ class FilmRepository
         // Récupère tous les films sous forme de tableau associatif
         $films = $stmt->fetchAll();
 
-                // Utilise le service de mappage pour convertir les résultats en objets Film
-                return $this->entityMapperService->mapToEntities($films, Film::class);
-            }
+        // Utilise le service de mappage pour convertir les résultats en objets Film
+        return $this->entityMapperService->mapToEntities($films, Film::class);
+        }
 /*
     // Ajouter un film
     public function addFilm(Film $film)

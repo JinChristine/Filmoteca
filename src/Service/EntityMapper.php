@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types=1); //conversion non permise, ex: 3+"3"=> pas possible
 
 namespace App\Service;
 

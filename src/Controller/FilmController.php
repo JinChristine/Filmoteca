@@ -6,10 +6,13 @@ namespace App\Controller;
 
 use App\Repository\FilmRepository;
 use App\Entity\Film;
+use \Twig\Loader\FilesystemLoader;
+use App\Core\TwigEnvironment;
 
-class FilmController // Intermédiaire entre le modèle et la vue
+class FilmController extends TwigEnvironment// Intermédiaire entre le modèle et la vue
 {
-    public function list()
+    
+    public function list(): void
     {
         $filmRepository = new FilmRepository();
         $films = $filmRepository->findAll();
@@ -29,9 +32,11 @@ class FilmController // Intermédiaire entre le modèle et la vue
         
         //dd($filmEntities);
         /*header('Content-type: application/json');
-        echo json_encode($films);*/
+        echo json_encode($films);*/ 
         //require __DIR__ . '/../views/listView.php'; // inclure le contenu de listView ici
-        return $films;
+
+        // Passer des variables à Twig et afficher un template pour la liste des films
+        echo $this->twig->render('films.html.twig', ['films'=>$films]);
     }
 
     public function create(array $params)
@@ -50,12 +55,13 @@ class FilmController // Intermédiaire entre le modèle et la vue
         echo "Création d'un film";
     }
 
-    public function read(array $params)
+    public function read(array $params): void
     {
         $filmRepository = new FilmRepository();
         $film = $filmRepository->find((int)$params['id']);
         //require __DIR__ .'/../views/readView.php';
-        return $film;
+        // Passer des variables à Twig et afficher un template pour un film en particulier
+        echo $this->twig->render('readFilm.html.twig', ['film'=>$film]);
     }
 
 
