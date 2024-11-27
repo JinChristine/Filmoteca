@@ -11,7 +11,7 @@ $rep = $router->route(); // Appelle la méthode route() pour gérer les requête
 
 //Configuration de l'environnement Twig
 // Définir le chemin vers les templates
-$loader = new \Twig\Loader\FilesystemLoader(realpath(__DIR__ .'/../templates')); 
+$loader = new \Twig\Loader\FilesystemLoader(__DIR__ .'/../src/templates'); 
 
 // Créer l'environnement Twig
 $twig = new \Twig\Environment($loader);
