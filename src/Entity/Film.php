@@ -8,7 +8,7 @@ class Film
 {
     private int $id;
     private string $title;
-    private ?string $year = null;
+    private ?int $year = null; // attend soit une valeur soit null
     private string $type;
     private ?string $synopsis = null;
     private ?string $director = null;
@@ -38,12 +38,12 @@ class Film
         return $this;
     }
 
-    public function getYear(): ?string
+    public function getYear(): ?int
     {
         return $this->year;
     }
 
-    public function setYear(?string $year): self
+    public function setYear(?int $year): self
     {
         $this->year = $year;
         return $this;

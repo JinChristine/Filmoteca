@@ -6,11 +6,17 @@ namespace App\Controller;
 
 use App\Repository\FilmRepository;
 use App\Entity\Film;
-use \Twig\Loader\FilesystemLoader;
-use App\Core\TwigEnvironment;
+//use App\Twig\Loader\FilesystemLoader;
+use App\Core\TemplateRenderer;
 
-class FilmController extends TwigEnvironment// Intermédiaire entre le modèle et la vue
+class FilmController// Intermédiaire entre le modèle et la vue
 {
+    private TemplateRenderer $renderer;
+    
+    public function __construct()
+    {
+        $this->renderer = new TemplateRenderer();
+    }
     
     public function list(): void
     {
@@ -36,37 +42,42 @@ class FilmController extends TwigEnvironment// Intermédiaire entre le modèle e
         //require __DIR__ . '/../views/listView.php'; // inclure le contenu de listView ici
 
         // Passer des variables à Twig et afficher un template pour la liste des films
-        echo $this->twig->render('films.html.twig', ['films'=>$films]);
+        echo $this->renderer->render('/film/films.html.twig', ['films'=>$films]);
     }
 
     public function create(): void
     {
-        /*
-        if (!isset($params['id']) && !isset($params['title']) && !isset($params['year']) && !isset($params['genre']) && !isset($params["synopsis"]) && !isset($params['director']) && !isset($params['created_at'])){
-            echo "Données incomplètes, création du film échoué";
-        }
-        else {
-            $film = new Film ((int)$params['id'], $params['title'], $params['year'], $params['genre'], $params["synopsis"], $params['director'], $params['created_at']);
-            $this->filmModel->addFilm($film);
-            echo "Création du film" . $params['title'];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Récupérer les données envoyées en POST
+            $data = $_POST;
 
-        }
-        */
-        var_dump($_POST['title']);        
-        if (isset($_POST['title']) && isset($_POST['type']) && isset($_POST['year']) && isset($_POST['synopsis']) && isset($_POST['director'])) {
-            $newFilm = new Film();
-            $newFilm->setTitle($_POST['title']);
-            $newFilm->setType($_POST['type']);
-            $newFilm->setYear($_POST['year']);
-            $newFilm->setSynopsis($_POST['synopsis']);
-            $newFilm->setDirector($_POST['director']);
-            $newFilm->setCreatedAt(new \DateTime());
-            echo "z";
-        $filmRepository = new FilmRepository();
-        $film = $filmRepository->addFilm($newFilm);
-        }
-        echo $this->twig->render('createFilm.html.twig');
+            // Validation des données
+            if (empty($data['title']) || empty($data['year']) || empty($data['type']) || empty($data['director']) || empty($data['synopsis'])) {
+                echo "Tous les champs sont obligatoires.";
+                return;
+            }
 
+            // Créer une nouvelle entité Film
+            $film = new Film();
+            $film->setTitle($data['title']);
+            $film->setYear($data['year']);
+            $film->setType($data['type']);
+            $film->setDirector($data['director']);
+            $film->setSynopsis($data['synopsis']);
+            $film->setCreatedAt(new \DateTime());
+            $film->setUpdatedAt(new \DateTime());
+
+            // Sauvegarder le film dans la base de données
+            $filmRepository = new FilmRepository();
+            $filmRepository->save($film);
+
+            // Rediriger ou afficher un message de succès
+            header('Location: /film/list');
+            exit;
+        }
+
+        // Si la requête est en GET, afficher le formulaire de création
+        echo $this->renderer->render('film/createFilm.html.twig', []);
     }
 
     public function read(array $params): void
@@ -75,11 +86,11 @@ class FilmController extends TwigEnvironment// Intermédiaire entre le modèle e
         $film = $filmRepository->find((int)$params['id']);
         //require __DIR__ .'/../views/readView.php';
         // Passer des variables à Twig et afficher un template pour un film en particulier
-        echo $this->twig->render('readFilm.html.twig', ['film'=>$film]);
+        echo $this->renderer->render('film/readFilm.html.twig', ['film'=>$film]);
     }
 
 
-    public function update(array $params)
+    public function update(array $params): void
     {
         /*
         if (!isset($params['id']) && !isset($params['title']) && !isset($params['year']) && !isset($params['genre']) && !isset($params["synopsis"]) && !isset($params['director']) && !isset($params['created_at'])){
@@ -91,10 +102,24 @@ class FilmController extends TwigEnvironment// Intermédiaire entre le modèle e
             echo "Mise à jour du film" . $params['title'];
         }
         */
-        echo "Mise à jour d'un film";
+        $filmRepository = new FilmRepository();
+        $film = $filmRepository->find((int)$params['id']);
+        
+        if(!$film){
+            echo "Film non trouvé";
+            return;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // On récupère localement l'instance de FilmRepository crée avant dans la méthode
+            $filmRepository->updateFilm((int)$params['id'], $_POST['title'], (int)$_POST['year'], $_POST['type'], $_POST['synopsis'], $_POST['director'], $_POST['created_at'], $_POST['deleted_at']?? null);
+        }
+        
+        //Affiche le formulaire avec les données actuelles
+        echo $this->renderer->render('film/updateFilm.html.twig', ['film'=>$film]);
     }
 
-    public function delete(array $params)
+    public function delete(array $params): void
     {
         /*
         if (!isset($params['id'])){
@@ -107,7 +132,24 @@ class FilmController extends TwigEnvironment// Intermédiaire entre le modèle e
 
         }
         */
-        echo "Suppression d'un film";
+            // Vérifier que l'ID est présent dans les paramètres
+        if (!isset($params['id'])) {
+            echo "Id est requis";
+            return;
+        }
+
+        $filmRepository = new FilmRepository();
+        $film = $filmRepository->find((int)$params['id']);
+        
+        if ($film === null) {
+            // Si le film n'est pas trouvé
+            echo "Film non trouvé.";
+            return;
+        }
+        echo $this->renderer->render('film/deleteFilm.html.twig', ['film'=>$film]);
+        if (true){// si le bouton est appuyé
+            $filmRepository->deleteFilm((int)$params['id']);
+        }
     }
 }
 

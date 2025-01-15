@@ -18,16 +18,17 @@
                 </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>{{ film.title }}</td>
-                <td>{{ film.year }}</td>
-                <td>{{ film.type }}</td>
-                <td>{{ film.director }}</td>
-                <td>{{ film.synopsis }}</td>
-                <td>{{ film.createdAt|date('Y-m-d H:i:s') }}</td>
-                <td>{{ film.updatedAt|date('Y-m-d H:i:s') }}</td>
-                <td>{{ film.deletedAt ? film.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+                <tr>
+                    <td>{{ film.title }}</td>
+                    <td>{{ film.year }}</td>
+                    <td>{{ film.type }}</td>
+                    <td>{{ film.director }}</td>
+                    <td>{{ film.synopsis }}</td>
+                    <td>{{ film.createdAt|date('Y-m-d H:i:s') }}</td>
+                    <td>{{ film.updatedAt|date('Y-m-d H:i:s') }}</td>
+                    <td>{{ film.deletedAt ? film.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
 {% endblock %}

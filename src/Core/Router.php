@@ -2,10 +2,10 @@
 declare(strict_types=1);
 
 namespace App\Core;
-
+use App\Controller\HomeController;
 class Router
 {
-    public function route()
+    public function route(): void
     {
         // Récupère l'URL demandée (sans le domaine et la racine)
         $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
@@ -47,7 +47,8 @@ class Router
             //$controller->index($queryParams); // On passe les paramètres à la méthode index()
         } else {
             // Page non trouvée
-            echo "404 Not Found";
+            $controller = new HomeController();
+            $controller->index();
         }
     }
 }    

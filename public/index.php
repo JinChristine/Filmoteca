@@ -7,5 +7,5 @@ require __DIR__ . '/../vendor/autoload.php'; // Chargement de toutes les classes
 use App\Core\Router; // Utilise la classe Router de Core
 
 $router = new Router(); //Crée une nouvelle instance de la classe Router
-$rep = $router->route(); // Appelle la méthode route() pour gérer les requêtes entrantes
+$router->route(); // Appelle la méthode route() pour gérer les requêtes entrantes
 

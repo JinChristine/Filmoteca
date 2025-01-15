@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Création d'un film{% endblock %}
+{% block content %}
+    <form action="/src/Controller/FilmController.php?id={{ film.id }}" method="POST">
+        <label for="title">Title</label> 
+        <input type="text" id="title" name ='title' required> 
+        <label for="year" >Year: </label> 
+        <input type="number" id="year" name ="year" required> 
+        <label for="type">Type: </label> 
+        <input type="text" id="type" name = "type" required> 
+        <label for="director">Director: </label> 
+        <input type="text" id="director" name = "director" required> 
+        <label for="synopsis">Synopsis: </label> 
+        <input type="text" id="synopsis" name="synopsis" required> 
+
+        <input class="btn btn-primary" type="submit" value="Submit">Ajouter un film</button>
+    </form>
+
+{% endblock %}
+
+        

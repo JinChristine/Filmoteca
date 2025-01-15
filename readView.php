@@ -10,7 +10,7 @@
 </head>
 <body>
     <header class="bg-primary text-white p-3 mb-4">
-        <h1 class="text-center">Liste des films</h1>
+        <h1 class="text-center">Lecture d'un film</h1>
     </header>
 
     <div class="container">

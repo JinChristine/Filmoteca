@@ -1,0 +1,71 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Modification d'un film{% endblock %}
+
+{% block content %}
+    <p>Voulez-vous modifier ce film ?</p>
+    <main class="container mt-4">
+        <table class="table table-bordered table-striped table-responsive table-hover">
+            <thead class="table-dark">
+                <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Year</th>
+                <th scope="col">Type</th>
+                <th scope="col">Director</th>
+                <th scope="col">Synopsis</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Updated At</th>
+                <th scope="col">Deleted At</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ film.title }}</td>
+                <td>{{ film.year }}</td>
+                <td>{{ film.type }}</td>
+                <td>{{ film.director }}</td>
+                <td>{{ film.synopsis }}</td>
+                <td>{{ film.createdAt|date('Y-m-d H:i:s') }}</td>
+                <td>{{ film.updatedAt|date('Y-m-d H:i:s') }}</td>
+                <td>{{ film.deletedAt ? film.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Modifier le film</h3>
+    <!--On envoie les données de modification -->
+    <form action="{{ path('update_film', {'id': film.id}) }}" method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">Titre</label>
+                <input type="text" class="form-control" id="title" name="title" value="{{ film.title }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="year" class="form-label">Année</label>
+                <input type="number" class="form-control" id="year" name="year" value="{{ film.year }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="type" class="form-label">Type</label>
+                <input type="text" class="form-control" id="type" name="type" value="{{ film.type }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="director" class="form-label">Réalisateur</label>
+                <input type="text" class="form-control" id="director" name="director" value="{{ film.director }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="synopsis" class="form-label">Synopsis</label>
+                <textarea class="form-control" id="synopsis" name="synopsis" required>{{ film.synopsis }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="created_at" class="form-label">Date de création</label>
+                <input type="text" class="form-control" id="created_at" name="created_at" value="{{ film.createdAt|date('Y-m-d H:i:s') }}" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="deleted_at" class="form-label">Date de suppression</label>
+                <input type="text" class="form-control" id="deleted_at" name="deleted_at" value="{{ film.deletedAt ? film.deletedAt|date('Y-m-d H:i:s') : '' }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Mettre à jour le film</button>
+        </form>
+
+    </main>
+    
+{% endblock %}

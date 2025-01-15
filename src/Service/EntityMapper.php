@@ -20,7 +20,9 @@ class EntityMapper
            if (str_contains($key, '_at') && null !== $value) {
                $value = new \DateTime($value);
            }
-
+           if ($key === 'year') {
+                $value = (int)$value; // Conversion explicite en entier de year
+            }
            // Si le setter existe, on l'appelle
            if (method_exists($entity, $setter)) {
                $entity->$setter($value);
