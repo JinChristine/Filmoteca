@@ -6,7 +6,7 @@ namespace App\Service;
 
 class EntityMapper
 {
-    public function mapToEntity(array $data, string $entityClass)
+    public function mapToEntity(array $data, string $entityClass) //créer une instance de Film
     {
        // Créer une instance de l'entité
        $entity = new $entityClass();
@@ -20,9 +20,7 @@ class EntityMapper
            if (str_contains($key, '_at') && null !== $value) {
                $value = new \DateTime($value);
            }
-           if ($key === 'year') {
-                $value = (int)$value; // Conversion explicite en entier de year
-            }
+
            // Si le setter existe, on l'appelle
            if (method_exists($entity, $setter)) {
                $entity->$setter($value);

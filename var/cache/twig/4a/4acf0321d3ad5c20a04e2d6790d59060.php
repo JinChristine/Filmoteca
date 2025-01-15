@@ -59,29 +59,55 @@ class __TwigTemplate_94d855b7ad14df65b8cc5af393fb4159 extends Template
         yield from [];
     }
 
-    // line 4
+    // line 5
     /**
      * @return iterable<null|scalar|\Stringable>
      */
     public function block_content(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        // line 5
-        yield "    <form action=\"/film/create\" method=\"POST\">
-        <label for=\"title\">Title</label> 
-        <input type=\"text\" id=\"title\" name ='title' required> 
-        <label for=\"year\" >Year: </label> 
-        <input type=\"number\" id=\"year\" name =\"year\" required> 
-        <label for=\"type\">Type: </label> 
-        <input type=\"text\" id=\"type\" name = \"type\" required> 
-        <label for=\"director\">Director: </label> 
-        <input type=\"text\" id=\"director\" name = \"director\" required> 
-        <label for=\"synopsis\">Synopsis: </label> 
-        <input type=\"text\" id=\"synopsis\" name=\"synopsis\" required> 
-
-        <button type=\"Submit\">Ajouter un film</button>
-    </form>
-
+        // line 6
+        yield "    <div class=\"container mt-5\">
+        <h1 class=\"mb-4 text-center\">Création d'un Film</h1>
+        <form action=\"/films/create\" method=\"POST\" class=\"bg-light p-4 rounded shadow\">
+            <div class=\"form-group mb-3\">
+                <label for=\"title\" class=\"form-label\">Titre</label>
+                <input type=\"text\" id=\"title\" name=\"title\" class=\"form-control\" placeholder=\"Titre du film\" required>
+            </div>
+            
+            <div class=\"form-group mb-3\">
+                <label for=\"year\" class=\"form-label\">Année</label>
+                <input type=\"number\" id=\"year\" name=\"year\" class=\"form-control\" placeholder=\"Année de sortie\" required>
+            </div>
+            
+            <div class=\"form-group mb-3\">
+                <label for=\"type\" class=\"form-label\">Type</label>
+                <input type=\"text\" id=\"type\" name=\"type\" class=\"form-control\" placeholder=\"Genre du film\" required>
+            </div>
+            
+            <div class=\"form-group mb-3\">
+                <label for=\"director\" class=\"form-label\">Réalisateur</label>
+                <input type=\"text\" id=\"director\" name=\"director\" class=\"form-control\" placeholder=\"Nom du réalisateur\" required>
+            </div>
+            
+            <div class=\"form-group mb-3\">
+                <label for=\"synopsis\" class=\"form-label\">Synopsis</label>
+                <textarea id=\"synopsis\" name=\"synopsis\" class=\"form-control\" rows=\"3\" placeholder=\"Résumé du film\" required></textarea>
+            </div>
+            
+            <div class=\"text-center\">
+                <button type=\"submit\" class=\"btn btn-primary btn-lg\">Ajouter un film</button>
+            </div>
+        </form>
+    </div>
+    <?php if (isset(\$filmAdded) && \$filmAdded): ?>
+    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+        Film ajouté avec succès !
+        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+        </button>
+    </div>
+<?php endif; ?>
 ";
         yield from [];
     }
@@ -107,7 +133,7 @@ class __TwigTemplate_94d855b7ad14df65b8cc5af393fb4159 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  70 => 5,  63 => 4,  52 => 3,  41 => 1,);
+        return array (  70 => 6,  63 => 5,  52 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -115,25 +141,50 @@ class __TwigTemplate_94d855b7ad14df65b8cc5af393fb4159 extends Template
         return new Source("{% extends \"base.html.twig\" %}
 
 {% block title %}Création d'un film{% endblock %}
+
 {% block content %}
-    <form action=\"/film/create\" method=\"POST\">
-        <label for=\"title\">Title</label> 
-        <input type=\"text\" id=\"title\" name ='title' required> 
-        <label for=\"year\" >Year: </label> 
-        <input type=\"number\" id=\"year\" name =\"year\" required> 
-        <label for=\"type\">Type: </label> 
-        <input type=\"text\" id=\"type\" name = \"type\" required> 
-        <label for=\"director\">Director: </label> 
-        <input type=\"text\" id=\"director\" name = \"director\" required> 
-        <label for=\"synopsis\">Synopsis: </label> 
-        <input type=\"text\" id=\"synopsis\" name=\"synopsis\" required> 
-
-        <button type=\"Submit\">Ajouter un film</button>
-    </form>
-
+    <div class=\"container mt-5\">
+        <h1 class=\"mb-4 text-center\">Création d'un Film</h1>
+        <form action=\"/films/create\" method=\"POST\" class=\"bg-light p-4 rounded shadow\">
+            <div class=\"form-group mb-3\">
+                <label for=\"title\" class=\"form-label\">Titre</label>
+                <input type=\"text\" id=\"title\" name=\"title\" class=\"form-control\" placeholder=\"Titre du film\" required>
+            </div>
+            
+            <div class=\"form-group mb-3\">
+                <label for=\"year\" class=\"form-label\">Année</label>
+                <input type=\"number\" id=\"year\" name=\"year\" class=\"form-control\" placeholder=\"Année de sortie\" required>
+            </div>
+            
+            <div class=\"form-group mb-3\">
+                <label for=\"type\" class=\"form-label\">Type</label>
+                <input type=\"text\" id=\"type\" name=\"type\" class=\"form-control\" placeholder=\"Genre du film\" required>
+            </div>
+            
+            <div class=\"form-group mb-3\">
+                <label for=\"director\" class=\"form-label\">Réalisateur</label>
+                <input type=\"text\" id=\"director\" name=\"director\" class=\"form-control\" placeholder=\"Nom du réalisateur\" required>
+            </div>
+            
+            <div class=\"form-group mb-3\">
+                <label for=\"synopsis\" class=\"form-label\">Synopsis</label>
+                <textarea id=\"synopsis\" name=\"synopsis\" class=\"form-control\" rows=\"3\" placeholder=\"Résumé du film\" required></textarea>
+            </div>
+            
+            <div class=\"text-center\">
+                <button type=\"submit\" class=\"btn btn-primary btn-lg\">Ajouter un film</button>
+            </div>
+        </form>
+    </div>
+    <?php if (isset(\$filmAdded) && \$filmAdded): ?>
+    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+        Film ajouté avec succès !
+        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+        </button>
+    </div>
+<?php endif; ?>
 {% endblock %}
-
-        
 ", "film/createFilm.html.twig", "/var/www/filmoteca/src/views/film/createFilm.html.twig");
     }
 }

@@ -58,13 +58,13 @@ class __TwigTemplate_44dcddc9548815ed603189088bac8d8e extends Template
 \t\t<div class=\"collapse navbar-collapse\" id=\"navbarNav\">
 \t\t\t<ul class=\"navbar-nav ms-auto\">
 \t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t<a class=\"nav-link\" href=\"/film/list\">
+\t\t\t\t\t<a class=\"nav-link\" href=\"/films/list\">
 \t\t\t\t\t\t<i class=\"fas fa-list\"></i>
 \t\t\t\t\t\tListe des films
 \t\t\t\t\t</a>
 \t\t\t\t</li>
 \t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t<a class=\"nav-link\" href=\"/film/create\">
+\t\t\t\t\t<a class=\"nav-link\" href=\"/films/create\">
 \t\t\t\t\t\t<i class=\"fas fa-plus-circle\"></i>
 \t\t\t\t\t\tAjouter un film
 \t\t\t\t\t</a>
@@ -113,13 +113,13 @@ class __TwigTemplate_44dcddc9548815ed603189088bac8d8e extends Template
 \t\t<div class=\"collapse navbar-collapse\" id=\"navbarNav\">
 \t\t\t<ul class=\"navbar-nav ms-auto\">
 \t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t<a class=\"nav-link\" href=\"/film/list\">
+\t\t\t\t\t<a class=\"nav-link\" href=\"/films/list\">
 \t\t\t\t\t\t<i class=\"fas fa-list\"></i>
 \t\t\t\t\t\tListe des films
 \t\t\t\t\t</a>
 \t\t\t\t</li>
 \t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t<a class=\"nav-link\" href=\"/film/create\">
+\t\t\t\t\t<a class=\"nav-link\" href=\"/films/create\">
 \t\t\t\t\t\t<i class=\"fas fa-plus-circle\"></i>
 \t\t\t\t\t\tAjouter un film
 \t\t\t\t\t</a>

@@ -8,14 +8,20 @@ use App\Repository\FilmRepository;
 use App\Entity\Film;
 //use App\Twig\Loader\FilesystemLoader;
 use App\Core\TemplateRenderer;
+use App\Service\FilmValidator;
+use App\Service\EntityMapper;
 
 class FilmController// Intermédiaire entre le modèle et la vue
 {
     private TemplateRenderer $renderer;
+    private FilmValidator $filmValidatorService;
+    private EntityMapper $entityMapperService;
     
     public function __construct()
     {
         $this->renderer = new TemplateRenderer();
+        $this->filmValidatorService = new FilmValidator();
+        $this->entityMapperService = new EntityMapper();
     }
     
     public function list(): void
@@ -42,7 +48,7 @@ class FilmController// Intermédiaire entre le modèle et la vue
         //require __DIR__ . '/../views/listView.php'; // inclure le contenu de listView ici
 
         // Passer des variables à Twig et afficher un template pour la liste des films
-        echo $this->renderer->render('/film/films.html.twig', ['films'=>$films]);
+        echo $this->renderer->render('film/films.html.twig', ['films'=>$films]);
     }
 
     public function create(): void
@@ -52,31 +58,29 @@ class FilmController// Intermédiaire entre le modèle et la vue
             $data = $_POST;
 
             // Validation des données
-            if (empty($data['title']) || empty($data['year']) || empty($data['type']) || empty($data['director']) || empty($data['synopsis'])) {
-                echo "Tous les champs sont obligatoires.";
-                return;
+            if($this->filmValidatorService->isValid($data, Film::class)){
+
+                $data = [
+                    'title' => isset($_POST['title']) ? htmlspecialchars(trim($_POST['title'])) : null,
+                    'year' => isset($_POST['year']) && filter_var($_POST['year'], FILTER_VALIDATE_INT) !== false ? $_POST['year'] : null,
+                    'type' => isset($_POST['type']) ? htmlspecialchars(trim($_POST['type'])) : null,
+                    'director' => isset($_POST['director']) ? htmlspecialchars(trim($_POST['director'])) : null,
+                    'synopsis' => isset($_POST['synopsis']) ? htmlspecialchars(trim($_POST['synopsis'])) : null,
+                ];
+
+                // Créer une nouvelle entité Film
+                $filmData = $this->entityMapperService->mapToEntity($data, Film::class);
+
+                // Sauvegarder le film dans la base de données
+                $filmRepository = new FilmRepository();
+                $filmRepository->addFilm($filmData);
+
+                // Rediriger vers la liste des films après l'ajout
+                header('Location:/films/list');
+                exit;                          
             }
-
-            // Créer une nouvelle entité Film
-            $film = new Film();
-            $film->setTitle($data['title']);
-            $film->setYear($data['year']);
-            $film->setType($data['type']);
-            $film->setDirector($data['director']);
-            $film->setSynopsis($data['synopsis']);
-            $film->setCreatedAt(new \DateTime());
-            $film->setUpdatedAt(new \DateTime());
-
-            // Sauvegarder le film dans la base de données
-            $filmRepository = new FilmRepository();
-            $filmRepository->save($film);
-
-            // Rediriger ou afficher un message de succès
-            header('Location: /film/list');
-            exit;
+            
         }
-
-        // Si la requête est en GET, afficher le formulaire de création
         echo $this->renderer->render('film/createFilm.html.twig', []);
     }
 
@@ -103,7 +107,12 @@ class FilmController// Intermédiaire entre le modèle et la vue
         }
         */
         $filmRepository = new FilmRepository();
-        $film = $filmRepository->find((int)$params['id']);
+        $id = $params['id'] ?? null;
+        if (!$id || !is_numeric($id)) {
+            echo "ID invalide ou manquant.";
+            return;
+        }
+        $film = $filmRepository->find((int)$id);
         
         if(!$film){
             echo "Film non trouvé";
@@ -111,10 +120,22 @@ class FilmController// Intermédiaire entre le modèle et la vue
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // On récupère localement l'instance de FilmRepository crée avant dans la méthode
-            $filmRepository->updateFilm((int)$params['id'], $_POST['title'], (int)$_POST['year'], $_POST['type'], $_POST['synopsis'], $_POST['director'], $_POST['created_at'], $_POST['deleted_at']?? null);
+            // On affecte les nouvelles valeurs sinon si c'est vide, on garde les anciennes valeurs 
+            $title = $_POST['title'] ?? $film->getTitle();
+            $year = $_POST['year'] ?? $film->getYear();
+            $type = $_POST['type'] ?? $film->getType();
+            $synopsis = $_POST['synopsis'] ?? $film->getSynopsis();
+            $director = $_POST['director'] ?? $film->getDirector();
+            $createdAt = $_POST['created_at'] ?? $film->getCreatedAt()->format('Y-m-d H:i:s');
+            $deletedAt = $_POST['deleted_at'] ?? null;
+    
+            if ($deletedAt === '') {
+                $deletedAt = null;
+            }
+            $filmRepository->updateFilm((int)$params['id'], $title, $year, $type, $synopsis, $director, $createdAt, $deletedAt);
+
         }
-        
+    
         //Affiche le formulaire avec les données actuelles
         echo $this->renderer->render('film/updateFilm.html.twig', ['film'=>$film]);
     }
@@ -147,9 +168,12 @@ class FilmController// Intermédiaire entre le modèle et la vue
             return;
         }
         echo $this->renderer->render('film/deleteFilm.html.twig', ['film'=>$film]);
-        if (true){// si le bouton est appuyé
-            $filmRepository->deleteFilm((int)$params['id']);
-        }
+        /* Suppression du film
+        $filmRepository->deleteFilm((int)$params['id']);
+        */
+        //Archivage du film
+        $filmRepository->archiveFilm((int)$params['id']);
+
     }
 }
 

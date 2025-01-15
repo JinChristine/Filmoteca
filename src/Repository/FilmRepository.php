@@ -11,6 +11,7 @@ class FilmRepository
 {
     private \PDO $db; // Instance de connexion à la base de données
     private EntityMapper $entityMapperService; // Service pour mapper les entités
+    private FilmValidator $validator;
 
     public function __construct (){
        // Initialise la connexion à la base de données en utilisant DatabaseConnection
@@ -37,25 +38,20 @@ class FilmRepository
     // Ajouter un film
     public function addFilm(Film $film): void
     {  
-            $query = "INSERT INTO film(title, year, synopsis, director, created_at, deleted_at, type) VALUES (:title, :year, :synopsis, :director, :created_at, :deleted_at, :type)";
-            $result = $this->db->prepare($query);
+        $query = "INSERT INTO film(title, year, synopsis, director, created_at, deleted_at, type) VALUES (:title, :year, :synopsis, :director, :created_at, :deleted_at, :type)";
+        $result = $this->db->prepare($query);
             
-            // Liaison des paramètres de la requête avec les attributs de de l'objet Film
-            $result->bindValue(':title', $film->getTitle());
-            $result->bindValue(':year', $film->getYear());
-            $result->bindValue(':synopsis', $film->getSynopsis());
-            $result->bindValue(':director', $film->getDirector());
-            $result->bindValue(':created_at', $film->getCreatedAt()->format('Y-m-d H:i:s'));
-            $result->bindValue(':deleted_at', $film->getDeletedAt() ? $film->getDeletedAt()->format('Y-m-d H:i:s') : null);
-            $result->bindValue(':type', $film->getType());
+        // Liaison des paramètres de la requête avec les attributs de de l'objet Film
+        $result->bindValue(':title', $film->getTitle());
+        $result->bindValue(':year', $film->getYear());
+        $result->bindValue(':synopsis', $film->getSynopsis());
+        $result->bindValue(':director', $film->getDirector());
+        $result->bindValue(':created_at', $film->getCreatedAt()->format('Y-m-d H:i:s'));
+        $result->bindValue(':deleted_at', $film->getDeletedAt() ? $film->getDeletedAt()->format('Y-m-d H:i:s') : null);
+        $result->bindValue(':type', $film->getType());
             
-            if ($result->execute()){
-                echo "Film bien ajouté";
-            }
-            else {
-                echo "erreur d'ajout";
-            }
-        }
+        $result->execute();
+    }
 
 
     // Méthode pour récupérer un film par son identifiant
@@ -76,26 +72,9 @@ class FilmRepository
         // Utilise le service de mappage pour convertir le résultat en objet Film
         return $this->entityMapperService->mapToEntity($film, Film::class);
     }
-    public function save(Film $film): void
-    {
-        $query = 'INSERT INTO film (title, year, type, director, synopsis, created_at, updated_at) 
-                VALUES (:title, :year, :type, :director, :synopsis, :created_at, :updated_at)';
-        $stmt = $this->db->prepare($query);
-
-        // Liaison des paramètres avec les propriétés de l'objet Film
-        $stmt->execute([
-            'title' => $film->getTitle(),
-            'year' => $film->getYear(),
-            'type' => $film->getType(),
-            'director' => $film->getDirector(),
-            'synopsis' => $film->getSynopsis(),
-            'created_at' => $film->getCreatedAt()->format('Y-m-d H:i:s'),
-            'updated_at' => $film->getUpdatedAt()->format('Y-m-d H:i:s'),
-        ]);
-    }
 
     // Mettre à jour un film
-    public function updateFilm(int $id, string $title, int $year, string $type, string $synopsis, string $director, string $created_at, string $deleted_at): void
+    public function updateFilm(int $id, string $title, string $year, string $type, string $synopsis, string $director, string $created_at, string $deleted_at): void
     {
         $query = "UPDATE film SET title = :title, year = :year, synopsis = :synopsis, director = :synopsis, created_at = :created_at, deleted_at =:deleted_at, type = :type WHERE id = :id";
         
@@ -119,6 +98,7 @@ class FilmRepository
 
             
         if ($result->execute()){
+
             echo "Mise à jour du film réussi";
         } else {
             echo "erreur d'ajout";
@@ -143,6 +123,22 @@ class FilmRepository
             echo "Erreur de suppression";
         }
     }
-    
+    public function archiveFilm(int $id): void    
+    {
+        $film = $this->find($id);
+        // Préparer la requête SQL de suppression
+        $query = "UPDATE film SET deleted_at = :delete_at WHERE id = :id";
+        $result = $this->db->prepare($query);
+        $deletedAt = (new \DateTime())->format('Y-m-d H:i:s');
+        $result->bindValue(':delete_at',$deletedAt);
+        $result->bindValue(':id', $id);
+        // Véifier que la requête a bien été exécutée
+        if ($result->execute()){
+            echo "Archivage du film réussi";
+            
+        } else {
+            echo "Erreur d'archivage";
+        }
+    }
 }
 ?>

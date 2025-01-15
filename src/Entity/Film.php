@@ -8,7 +8,7 @@ class Film
 {
     private int $id;
     private string $title;
-    private ?int $year = null; // attend soit une valeur soit null
+    private ?string $year = null; // attend soit une valeur soit null
     private string $type;
     private ?string $synopsis = null;
     private ?string $director = null;
@@ -16,6 +16,11 @@ class Film
     private \DateTime $createdAt;
     private ?\DateTime $updatedAt = null;
 
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+    }
     public function getId(): int
     {
         return $this->id;
@@ -38,12 +43,12 @@ class Film
         return $this;
     }
 
-    public function getYear(): ?int
+    public function getYear(): ?string
     {
         return $this->year;
     }
 
-    public function setYear(?int $year): self
+    public function setYear(?string $year): self
     {
         $this->year = $year;
         return $this;

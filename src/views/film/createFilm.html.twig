@@ -1,22 +1,40 @@
 {% extends "base.html.twig" %}
 
 {% block title %}Création d'un film{% endblock %}
-{% block content %}
-    <form action="/src/Controller/FilmController.php?id={{ film.id }}" method="POST">
-        <label for="title">Title</label> 
-        <input type="text" id="title" name ='title' required> 
-        <label for="year" >Year: </label> 
-        <input type="number" id="year" name ="year" required> 
-        <label for="type">Type: </label> 
-        <input type="text" id="type" name = "type" required> 
-        <label for="director">Director: </label> 
-        <input type="text" id="director" name = "director" required> 
-        <label for="synopsis">Synopsis: </label> 
-        <input type="text" id="synopsis" name="synopsis" required> 
 
-        <input class="btn btn-primary" type="submit" value="Submit">Ajouter un film</button>
-    </form>
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Création d'un Film</h1>
+        <form action="/films/create" method="POST" class="bg-light p-4 rounded shadow">
+            <div class="form-group mb-3">
+                <label for="title" class="form-label">Titre</label>
+                <input type="text" id="title" name="title" class="form-control" placeholder="Titre du film" required>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label for="year" class="form-label">Année</label>
+                <input type="number" id="year" name="year" class="form-control" placeholder="Année de sortie" required>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label for="type" class="form-label">Type</label>
+                <input type="text" id="type" name="type" class="form-control" placeholder="Genre du film" required>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label for="director" class="form-label">Réalisateur</label>
+                <input type="text" id="director" name="director" class="form-control" placeholder="Nom du réalisateur" required>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label for="synopsis" class="form-label">Synopsis</label>
+                <textarea id="synopsis" name="synopsis" class="form-control" rows="3" placeholder="Résumé du film" required></textarea>
+            </div>
+            
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg">Ajouter un film</button>
+            </div>
+        </form>
+    </div>
 
 {% endblock %}
-
-        
