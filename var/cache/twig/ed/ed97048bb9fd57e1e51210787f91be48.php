@@ -122,7 +122,10 @@ class __TwigTemplate_ca4ec5659587cba62a53dc3b06f8f9a7 extends Template
 
     <h3>Modifier le film</h3>
     <!--On envoie les données de modification -->
-    <form action=\"/films/update\" method=\"POST\">
+    <form action=\"/films/update?id=";
+        // line 37
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["film"] ?? null), "id", [], "any", false, false, false, 37), "html", null, true);
+        yield "&verif=true\" method=\"POST\">
             <div class=\"mb-3\">
                 <label for=\"title\" class=\"form-label\">Titre</label>
                 <input type=\"text\" class=\"form-control\" id=\"title\" name=\"title\" value=\"";
@@ -202,7 +205,7 @@ class __TwigTemplate_ca4ec5659587cba62a53dc3b06f8f9a7 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  172 => 64,  165 => 60,  158 => 56,  151 => 52,  144 => 48,  137 => 44,  130 => 40,  117 => 30,  113 => 29,  109 => 28,  105 => 27,  101 => 26,  97 => 25,  93 => 24,  89 => 23,  70 => 6,  63 => 5,  52 => 3,  41 => 1,);
+        return array (  175 => 64,  168 => 60,  161 => 56,  154 => 52,  147 => 48,  140 => 44,  133 => 40,  127 => 37,  117 => 30,  113 => 29,  109 => 28,  105 => 27,  101 => 26,  97 => 25,  93 => 24,  89 => 23,  70 => 6,  63 => 5,  52 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -243,7 +246,7 @@ class __TwigTemplate_ca4ec5659587cba62a53dc3b06f8f9a7 extends Template
 
     <h3>Modifier le film</h3>
     <!--On envoie les données de modification -->
-    <form action=\"/films/update\" method=\"POST\">
+    <form action=\"/films/update?id={{ film.id }}&verif=true\" method=\"POST\">
             <div class=\"mb-3\">
                 <label for=\"title\" class=\"form-label\">Titre</label>
                 <input type=\"text\" class=\"form-control\" id=\"title\" name=\"title\" value=\"{{ film.title }}\" required>

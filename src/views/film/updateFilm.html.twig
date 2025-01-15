@@ -34,7 +34,7 @@
 
     <h3>Modifier le film</h3>
     <!--On envoie les données de modification -->
-    <form action="/films/update" method="POST">
+    <form action="/films/update?verif=true&id={{ film.id }}" method="POST">
             <div class="mb-3">
                 <label for="title" class="form-label">Titre</label>
                 <input type="text" class="form-control" id="title" name="title" value="{{ film.title }}" required>

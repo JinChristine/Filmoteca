@@ -100,14 +100,7 @@ class __TwigTemplate_94d855b7ad14df65b8cc5af393fb4159 extends Template
             </div>
         </form>
     </div>
-    <?php if (isset(\$filmAdded) && \$filmAdded): ?>
-    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
-        Film ajouté avec succès !
-        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
-            <span aria-hidden=\"true\">&times;</span>
-        </button>
-    </div>
-<?php endif; ?>
+
 ";
         yield from [];
     }
@@ -176,14 +169,7 @@ class __TwigTemplate_94d855b7ad14df65b8cc5af393fb4159 extends Template
             </div>
         </form>
     </div>
-    <?php if (isset(\$filmAdded) && \$filmAdded): ?>
-    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
-        Film ajouté avec succès !
-        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
-            <span aria-hidden=\"true\">&times;</span>
-        </button>
-    </div>
-<?php endif; ?>
+
 {% endblock %}
 ", "film/createFilm.html.twig", "/var/www/filmoteca/src/views/film/createFilm.html.twig");
     }

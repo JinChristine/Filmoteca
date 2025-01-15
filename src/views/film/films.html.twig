@@ -22,6 +22,7 @@
                     <th>Ajouté le</th>
                     <th>Modifié le</th>
                     <th> Supprimé le </th>
+                    <th> Actions </th>
                 </tr>
             </thead>
 
@@ -37,6 +38,14 @@
                         <td>{{ film.createdAt.format('d/m/Y H:i') }}</td>
                         <td>{{ film.updatedAt.format('d/m/Y H:i') }}</td>
                         <td>{{ film.deleted_at.format('d/m/Y H:i') }}</td>
+                        <td> 
+                        <form action="/films/update?id={{ film.id }}&verif=false" method="POST" class="bg-light p-4 rounded shadow">
+                            <button type="Submit" class="btn btn-outline-success">Modifier</button>
+                        </form>
+                        <form action="/films/delete?id={{ film.id }}" method="POST" class="bg-light p-4 rounded shadow">
+                            <button type="Submit" class="btn btn-outline-danger" >Supprimer</button>
+                        </form>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>

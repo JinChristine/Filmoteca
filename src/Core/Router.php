@@ -10,7 +10,7 @@ class Router
         // Récupère l'URL demandée (sans le domaine et la racine)
         $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
         //var_dump($uri);
-        
+        //dd($uri);
         // Découpe l'URI pour obtenir la route et l'action
         $parts = explode('/', $uri); // Exemple: ['films', 'create']
 

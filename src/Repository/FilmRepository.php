@@ -27,7 +27,6 @@ class FilmRepository
         $query = 'SELECT * FROM film';
         // Exécute la requête et récupère le résultat
         $stmt = $this->db->query($query);
-        
         // Récupère tous les films sous forme de tableau associatif
         $films = $stmt->fetchAll();
 
@@ -74,35 +73,19 @@ class FilmRepository
     }
 
     // Mettre à jour un film
-    public function updateFilm(int $id, string $title, string $year, string $type, string $synopsis, string $director, string $created_at, string $deleted_at): void
+    public function updateFilm(Film $film): void
     {
-        $query = "UPDATE film SET title = :title, year = :year, synopsis = :synopsis, director = :synopsis, created_at = :created_at, deleted_at =:deleted_at, type = :type WHERE id = :id";
-        
-        // Si 'deleted_at' est une chaîne vide, on la remplace par NULL
-        if ($deleted_at === '') {
-            $deleted_at = null;
-        }
-
+        $query = "UPDATE film SET title = :title, year = :year, type = :type, synopsis = :synopsis, director = :director, updated_at = :updated_at WHERE id = :id";
         $result = $this->db->prepare($query);
-            
         // Liaison des paramètres de la requête avec les attributs de de l'objet Film
-        $result->bindValue(':id', $id);
-        $result->bindValue(':title', $title);
-        $result->bindValue(':year', $year);
-        $result->bindValue(':synopsis', $synopsis);
-        $result->bindValue(':director', $director);
-        $result->bindValue(':created_at', $created_at);
-        $result->bindValue(':deleted_at', $deleted_at);
-        $result->bindValue(':type', $type);
-        $result->bindValue(':deleted_at', $deleted_at, \PDO::PARAM_NULL);
-
-            
-        if ($result->execute()){
-
-            echo "Mise à jour du film réussi";
-        } else {
-            echo "erreur d'ajout";
-        }
+        $result->bindValue(':id', $film->getId(), \PDO::PARAM_INT);
+        $result->bindValue(':title',$film->getTitle(), \PDO::PARAM_STR);
+        $result->bindValue(':year', $film->getYear(), \PDO::PARAM_STR);
+        $result->bindValue(':synopsis', $film->getSynopsis(), \PDO::PARAM_STR);
+        $result->bindValue(':director', $film->getDirector(), \PDO::PARAM_STR);
+        $result->bindValue(':type', $film->getType(), \PDO::PARAM_STR);   
+        $result->bindValue(':updated_at', $film->getUpdatedAt() ? $film->getUpdatedAt()->format('Y-m-d H:i:s') : \PDO::PARAM_NULL);         
+        $result->execute();
 
     }
 

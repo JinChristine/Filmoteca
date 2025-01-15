@@ -4,7 +4,9 @@
     font-family: 'Arial', sans-serif;
     gap: 10px;
 }
-
+.btn {
+    padding: 5px;
+}
 .film-strip {
     display: flex;
     align-items: center;

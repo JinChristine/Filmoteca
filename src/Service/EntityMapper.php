@@ -10,7 +10,6 @@ class EntityMapper
     {
        // Créer une instance de l'entité
        $entity = new $entityClass();
-
        // Pour chaque champ de l'entité, assigner la valeur correspondante dans $data
        foreach ($data as $key => $value) {
            $setterKey = str_replace('_', '', ucwords($key, '_'));
@@ -18,7 +17,7 @@ class EntityMapper
 
            // Si le champ contient "at" (ex : created_at), convertir en DateTime
            if (str_contains($key, '_at') && null !== $value) {
-               $value = new \DateTime($value);
+                $value = new \DateTime($value);
            }
 
            // Si le setter existe, on l'appelle
@@ -36,7 +35,6 @@ class EntityMapper
     public function mapToEntities(array $rows, string $entityClass): array
     {
         $entities = [];
-
         foreach ($rows as $row) {
             $entities[] = $this->mapToEntity($row, $entityClass);
         }

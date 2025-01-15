@@ -69,6 +69,24 @@ class __TwigTemplate_44dcddc9548815ed603189088bac8d8e extends Template
 \t\t\t\t\t\tAjouter un film
 \t\t\t\t\t</a>
 \t\t\t\t</li>
+\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t<a class=\"nav-link\" href=\"/films/read\">
+\t\t\t\t\t\t<i class=\"fas fa-eye\"></i>
+\t\t\t\t\t\tLire un film
+\t\t\t\t\t</a>
+\t\t\t\t</li>
+\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t<a class=\"nav-link\" href=\"/films/update\">
+\t\t\t\t\t\t<i class=\"fas fa-pen\"></i>
+\t\t\t\t\t\tModifier un film
+\t\t\t\t\t</a>
+\t\t\t\t</li>
+\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t<a class=\"nav-link\" href=\"/films/delete>
+\t\t\t\t\t\t<i class=\"fas fa-minus-circle\"></i>
+\t\t\t\t\t\tSupprimer un film
+\t\t\t\t\t</a>
+\t\t\t\t</li>
 \t\t\t</ul>
 \t\t</div>
 \t</div>
@@ -122,6 +140,24 @@ class __TwigTemplate_44dcddc9548815ed603189088bac8d8e extends Template
 \t\t\t\t\t<a class=\"nav-link\" href=\"/films/create\">
 \t\t\t\t\t\t<i class=\"fas fa-plus-circle\"></i>
 \t\t\t\t\t\tAjouter un film
+\t\t\t\t\t</a>
+\t\t\t\t</li>
+\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t<a class=\"nav-link\" href=\"/films/read\">
+\t\t\t\t\t\t<i class=\"fas fa-eye\"></i>
+\t\t\t\t\t\tLire un film
+\t\t\t\t\t</a>
+\t\t\t\t</li>
+\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t<a class=\"nav-link\" href=\"/films/update\">
+\t\t\t\t\t\t<i class=\"fas fa-pen\"></i>
+\t\t\t\t\t\tModifier un film
+\t\t\t\t\t</a>
+\t\t\t\t</li>
+\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t<a class=\"nav-link\" href=\"/films/delete>
+\t\t\t\t\t\t<i class=\"fas fa-minus-circle\"></i>
+\t\t\t\t\t\tSupprimer un film
 \t\t\t\t\t</a>
 \t\t\t\t</li>
 \t\t\t</ul>
