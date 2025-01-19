@@ -69,14 +69,16 @@ class __TwigTemplate_37910843755b3f2ff0f18f379a03deba extends Template
         // line 6
         yield "<div class=\"container my-5\">
     <!-- Hero Section -->
-    <section class=\"text-center mb-5\">
+     <section class=\"text-center mb-5\">
+     <div class=\"title-color\">
         <h1 class=\"display-4 fw-bold text-primary\">
             <i class=\"fas fa-video\"></i> Bienvenue sur Filmoteca
         </h1>
+    </div>
         <p class=\"lead text-muted\">
             Gérez votre collection de films avec une interface simple et intuitive.
         </p>
-        <a href=\"/film/list\" class=\"btn btn-primary btn-lg\">
+        <a href=\"/films/list\" class=\"btn btn-success btn-lg\">
             <i class=\"fas fa-film\"></i> Voir les films
         </a>
     </section>
@@ -87,13 +89,10 @@ class __TwigTemplate_37910843755b3f2ff0f18f379a03deba extends Template
             <div class=\"card shadow-sm\">
                 <div class=\"card-body\">
                     <h5 class=\"card-title\">
-                        <i class=\"fas fa-list-ul\"></i> Liste des films
+                        <i class=\"fas fa-eye\"></i> Lecture d'un film
                     </h5>
-                    <p class=\"card-text\">
-                        Consultez et explorez tous les films ajoutés à votre collection.
-                    </p>
-                    <a href=\"/films/list\" class=\"btn btn-outline-primary\">
-                        <i class=\"fas fa-arrow-right\"></i> Accéder
+                    <a href=\"/films/read\" class=\"btn btn-outline-success\">
+                        <i class=\"fas fa-arrow-right\"></i> Accéder un film
                     </a>
                 </div>
             </div>
@@ -104,11 +103,8 @@ class __TwigTemplate_37910843755b3f2ff0f18f379a03deba extends Template
                     <h5 class=\"card-title\">
                         <i class=\"fas fa-plus\"></i> Ajouter un film
                     </h5>
-                    <p class=\"card-text\">
-                        Ajoutez facilement de nouveaux films à votre collection.
-                    </p>
-                    <a href=\"/films/create\" class=\"btn btn-outline-primary\">
-                        <i class=\"fas fa-plus-circle\"></i> Ajouter
+                    <a href=\"/films/create\" class=\"btn btn-outline-info\">
+                        <i class=\"fas fa-plus-circle\"></i> Ajouter un nouveau film
                     </a>
                 </div>
             </div>
@@ -119,28 +115,14 @@ class __TwigTemplate_37910843755b3f2ff0f18f379a03deba extends Template
                     <h5 class=\"card-title\">
                         <i class=\"fas fa-cogs\"></i> Organisation intuitive
                     </h5>
-                    <p class=\"card-text\">
-                        Gérez vos films avec des outils simples et efficaces.
-                    </p>
-                    <a href=\"/films/list\" class=\"btn btn-outline-primary\">
-                        <i class=\"fas fa-cog\"></i> Commencer
+                    <a href=\"/films/list\" class=\"btn btn-outline-danger\">
+                        <i class=\"fas fa-cog\"></i> Gérer les films
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class=\"text-center py-5\">
-        
-        <h2 class=\"fw-bold\">
-            <i class=\"fas fa-rocket\"></i> Commencez dès maintenant !
-        </h2>
-        <p class=\"text-muted\">Ajoutez vos premiers films pour profiter de toutes les fonctionnalités.</p>
-        <a href=\"/films/create\" class=\"btn btn-success btn-lg\">
-            <i class=\"fas fa-plus-circle\"></i> Ajouter un film
-        </a>
-    </section>
 </div>
 ";
         yield from [];
@@ -179,14 +161,16 @@ class __TwigTemplate_37910843755b3f2ff0f18f379a03deba extends Template
 {% block content %}
 <div class=\"container my-5\">
     <!-- Hero Section -->
-    <section class=\"text-center mb-5\">
+     <section class=\"text-center mb-5\">
+     <div class=\"title-color\">
         <h1 class=\"display-4 fw-bold text-primary\">
             <i class=\"fas fa-video\"></i> Bienvenue sur Filmoteca
         </h1>
+    </div>
         <p class=\"lead text-muted\">
             Gérez votre collection de films avec une interface simple et intuitive.
         </p>
-        <a href=\"/film/list\" class=\"btn btn-primary btn-lg\">
+        <a href=\"/films/list\" class=\"btn btn-success btn-lg\">
             <i class=\"fas fa-film\"></i> Voir les films
         </a>
     </section>
@@ -197,13 +181,10 @@ class __TwigTemplate_37910843755b3f2ff0f18f379a03deba extends Template
             <div class=\"card shadow-sm\">
                 <div class=\"card-body\">
                     <h5 class=\"card-title\">
-                        <i class=\"fas fa-list-ul\"></i> Liste des films
+                        <i class=\"fas fa-eye\"></i> Lecture d'un film
                     </h5>
-                    <p class=\"card-text\">
-                        Consultez et explorez tous les films ajoutés à votre collection.
-                    </p>
-                    <a href=\"/films/list\" class=\"btn btn-outline-primary\">
-                        <i class=\"fas fa-arrow-right\"></i> Accéder
+                    <a href=\"/films/read\" class=\"btn btn-outline-success\">
+                        <i class=\"fas fa-arrow-right\"></i> Accéder un film
                     </a>
                 </div>
             </div>
@@ -214,11 +195,8 @@ class __TwigTemplate_37910843755b3f2ff0f18f379a03deba extends Template
                     <h5 class=\"card-title\">
                         <i class=\"fas fa-plus\"></i> Ajouter un film
                     </h5>
-                    <p class=\"card-text\">
-                        Ajoutez facilement de nouveaux films à votre collection.
-                    </p>
-                    <a href=\"/films/create\" class=\"btn btn-outline-primary\">
-                        <i class=\"fas fa-plus-circle\"></i> Ajouter
+                    <a href=\"/films/create\" class=\"btn btn-outline-info\">
+                        <i class=\"fas fa-plus-circle\"></i> Ajouter un nouveau film
                     </a>
                 </div>
             </div>
@@ -229,29 +207,16 @@ class __TwigTemplate_37910843755b3f2ff0f18f379a03deba extends Template
                     <h5 class=\"card-title\">
                         <i class=\"fas fa-cogs\"></i> Organisation intuitive
                     </h5>
-                    <p class=\"card-text\">
-                        Gérez vos films avec des outils simples et efficaces.
-                    </p>
-                    <a href=\"/films/list\" class=\"btn btn-outline-primary\">
-                        <i class=\"fas fa-cog\"></i> Commencer
+                    <a href=\"/films/list\" class=\"btn btn-outline-danger\">
+                        <i class=\"fas fa-cog\"></i> Gérer les films
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class=\"text-center py-5\">
-        
-        <h2 class=\"fw-bold\">
-            <i class=\"fas fa-rocket\"></i> Commencez dès maintenant !
-        </h2>
-        <p class=\"text-muted\">Ajoutez vos premiers films pour profiter de toutes les fonctionnalités.</p>
-        <a href=\"/films/create\" class=\"btn btn-success btn-lg\">
-            <i class=\"fas fa-plus-circle\"></i> Ajouter un film
-        </a>
-    </section>
 </div>
-{% endblock %}", "homepage.html.twig", "/var/www/filmoteca/src/views/homepage.html.twig");
+{% endblock %}
+", "homepage.html.twig", "/var/www/filmoteca/src/views/homepage.html.twig");
     }
 }

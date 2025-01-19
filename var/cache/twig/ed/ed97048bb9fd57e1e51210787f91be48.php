@@ -122,10 +122,10 @@ class __TwigTemplate_ca4ec5659587cba62a53dc3b06f8f9a7 extends Template
 
     <h3>Modifier le film</h3>
     <!--On envoie les données de modification -->
-    <form action=\"/films/update?id=";
+    <form action=\"/films/update?verif=true&id=";
         // line 37
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["film"] ?? null), "id", [], "any", false, false, false, 37), "html", null, true);
-        yield "&verif=true\" method=\"POST\">
+        yield "\" method=\"POST\">
             <div class=\"mb-3\">
                 <label for=\"title\" class=\"form-label\">Titre</label>
                 <input type=\"text\" class=\"form-control\" id=\"title\" name=\"title\" value=\"";
@@ -246,7 +246,7 @@ class __TwigTemplate_ca4ec5659587cba62a53dc3b06f8f9a7 extends Template
 
     <h3>Modifier le film</h3>
     <!--On envoie les données de modification -->
-    <form action=\"/films/update?id={{ film.id }}&verif=true\" method=\"POST\">
+    <form action=\"/films/update?verif=true&id={{ film.id }}\" method=\"POST\">
             <div class=\"mb-3\">
                 <label for=\"title\" class=\"form-label\">Titre</label>
                 <input type=\"text\" class=\"form-control\" id=\"title\" name=\"title\" value=\"{{ film.title }}\" required>

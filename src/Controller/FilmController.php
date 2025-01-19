@@ -86,19 +86,40 @@ class FilmController// Intermédiaire entre le modèle et la vue
 
     public function read(array $params): void
     {
-        if (!isset($_GET['id']) || !is_numeric($_GET['id']) || (int)$_GET['id'] <= 0) {
-            echo "Identifiant invalide ou manquant.";
-            return;
-        }
-        // Convertir l'identifiant en entier
-        $id = (int)$_GET['id'];
         $filmRepository = new FilmRepository();
-        $film = $filmRepository->find($id);
-        if (!$film) {
-            echo "Film non trouvé.";
-            return;
+        $films = $filmRepository->findAll();
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            if(isset($_POST['id'])){
+                if (!is_numeric($_POST['id']) || (int)$_POST['id'] <= 0 || (int) $_POST['id'] > sizeof($films)) {
+                    echo "Identifiant invalide ou manquant.";
+                    return;
+                }
+                $id = (int) $_POST['id'];
+                
+                $film = $filmRepository-> find((int)$id);
+                echo $this->renderer->render('film/readFilm.html.twig', ['film' => $film]);
+            }
+            if (!$film) {
+                echo "Film non trouvé.";
+                return;
+            }
         }
-        echo $this->renderer->render('film/readFilm.html.twig', ['film' => $film]);
+        else if(isset($params['id'])){
+            if (!is_numeric($params['id']) || (int)$params['id'] <= 0 || (int) $params['id'] > sizeof($films)) {
+                echo "Identifiant invalide ou manquant.";
+                return;
+            }
+            $id = (int) $params['id'];
+            $film = $filmRepository-> find((int)$id);
+            echo $this->renderer->render('film/readFilm.html.twig', ['film' => $film]);
+            if (!$film) {
+                echo "Film non trouvé.";
+                return;
+            }
+        }
+        else{
+            echo $this->renderer->render('film/read.html.twig', []);
+        }
     }
 
 
@@ -122,11 +143,9 @@ class FilmController// Intermédiaire entre le modèle et la vue
             echo "Film non trouvé";
             return;
         }
-    var_dump($params);
-    var_dump(isset($params['verif']));
-        var_dump($_SERVER['REQUEST_METHOD']=== 'POST');
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($params['verif'])) {
-            if($params['verif'] == true){
+           
+            if($params['verif'] == 'true'){
                 // On affecte les nouvelles valeurs sinon si c'est vide, on garde les anciennes valeurs 
                 $data =['id'=>$_POST['id'] ?? $film->getId(),
                 'title'=>$_POST['title'] ?? $film->getTitle(), 

@@ -82,7 +82,7 @@ class __TwigTemplate_44dcddc9548815ed603189088bac8d8e extends Template
 \t\t\t\t\t</a>
 \t\t\t\t</li>
 \t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t<a class=\"nav-link\" href=\"/films/delete>
+\t\t\t\t\t<a class=\"nav-link\" href=\"/films/delete\">
 \t\t\t\t\t\t<i class=\"fas fa-minus-circle\"></i>
 \t\t\t\t\t\tSupprimer un film
 \t\t\t\t\t</a>
@@ -155,7 +155,7 @@ class __TwigTemplate_44dcddc9548815ed603189088bac8d8e extends Template
 \t\t\t\t\t</a>
 \t\t\t\t</li>
 \t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t<a class=\"nav-link\" href=\"/films/delete>
+\t\t\t\t\t<a class=\"nav-link\" href=\"/films/delete\">
 \t\t\t\t\t\t<i class=\"fas fa-minus-circle\"></i>
 \t\t\t\t\t\tSupprimer un film
 \t\t\t\t\t</a>
