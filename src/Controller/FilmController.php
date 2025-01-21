@@ -94,6 +94,9 @@ class FilmController// Intermédiaire entre le modèle et la vue
                     echo "Identifiant invalide ou manquant.";
                     return;
                 }
+                /*if ($this->filmValidatorService->isValidId($_POST(), $films)){
+                    $id = (int) $_POST['id'];
+                }*/
                 $id = (int) $_POST['id'];
                 
                 $film = $filmRepository-> find((int)$id);
@@ -136,38 +139,54 @@ class FilmController// Intermédiaire entre le modèle et la vue
         }
         */
         $filmRepository = new FilmRepository();
-        $id = (int) $params['id'];    
-        $film = $filmRepository->find((int)$id);
-        
-        if(!$film){
-            echo "Film non trouvé";
-            return;
-        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($params['verif'])) {
-           
-            if($params['verif'] == 'true'){
+            if(isset($params['id'])){
+                $id = (int) $params['id'];    
+            }
+            else {
+                $id = (int) $_POST['id'];
+            }
+            $film = $filmRepository->find((int)$id);
+            if(!$film){
+                echo "Film non trouvé";
+                return;
+            }
+            if($params['verif'] == 'false'){
+                //Affiche le formulaire avec les données actuelles
+                echo $this->renderer->render('film/updateFilm.html.twig', ['film'=>$film]);
+            }
+            else{
                 // On affecte les nouvelles valeurs sinon si c'est vide, on garde les anciennes valeurs 
+                if($film->getDeletedAt() == null){
+                    $val = null;
+                }
+                else {
+                    $val = $film->getDeletedAt()->format('Y-m-d H:i:s');
+                }
                 $data =['id'=>$_POST['id'] ?? $film->getId(),
                 'title'=>$_POST['title'] ?? $film->getTitle(), 
                 'year'=>$_POST['year'] ?? $film->getYear(),
                 'type' => $_POST['type'] ?? $film->getType(),
                 'synopsis' => $_POST['synopsis'] ?? $film->getSynopsis(),
                 'director' => $_POST['director'] ?? $film->getDirector(),
-                'created_at' => $_POST['created_at'] ?? $film->getCreatedAt(),
-                'deleted_at' => $_POST['deleted_at'] ?? null,
+                'created_at' =>  $film->getCreatedAt()->format('Y-m-d H:i:s'),
+                'deleted_at' => $val,
                 'updated_at' => date('Y-m-d H:i:s')
                 ];
                 $filmData = $this->entityMapperService->mapToEntity($data, Film::class);
 
                 $filmRepository->updateFilm($filmData);
+                
                 header("Location: /films/list"); 
                 exit;
             }
             
         }
+        else{
+            echo $this->renderer->render('film/update.html.twig', []);
+        }
     
-        //Affiche le formulaire avec les données actuelles
-        echo $this->renderer->render('film/updateFilm.html.twig', ['film'=>$film]);
+
     }
 
     public function delete(array $params): void
@@ -191,22 +210,50 @@ class FilmController// Intermédiaire entre le modèle et la vue
         }
         */
         $filmRepository = new FilmRepository();
-        $film = $filmRepository->find((int)$params['id']);
-        
-        if ($film === null) {
-            // Si le film n'est pas trouvé
-            echo "Film non trouvé.";
-            return;
-        }
-        echo $this->renderer->render('film/deleteFilm.html.twig', ['film'=>$film]);
-        /* Suppression du film
-        $filmRepository->deleteFilm((int)$params['id']);
-        */
-        //Archivage du film
-        $filmRepository->archiveFilm((int)$params['id']);
-        header("Location: /films/list"); 
-        exit;
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            if(isset($_POST['id'])&& isset($params['verif'])){
+                $films = $filmRepository->findAll();
+                if($this->filmValidatorService->isValidId($_POST, $films)){
+                    $id = (int)$_POST['id'];
+                    $film = $filmRepository->find($id);
+                    if ($film === null) {
+                        // Si le film n'est pas trouvé
+                        echo "Film non trouvé.";
+                        return;
+                    }
+                    echo $this->renderer->render('film/deleteFilm.html.twig', ['film'=>$film]);
+                    
+                    
+                }
+            } else if(isset($params['id']) && isset($params['verif'])){
+                $films = $filmRepository->findAll();
+                if($this->filmValidatorService->isValidId(['id'=>$params['id']], $films)){
+                    $id = (int)$params['id'];
+                    $film = $filmRepository->find($id);
+                    if ($film === null) {
+                        // Si le film n'est pas trouvé
+                        echo "Film non trouvé.";
+                        return;
+                    }
 
+                    echo $this->renderer->render('film/deleteFilm.html.twig', ['film'=>$film]);
+                    
+                }
+            }
+            else if(isset($params['archive'])){
+                    /* Suppression du film
+                    $filmRepository->deleteFilm((int)$params['id']);
+                    */
+                    //Archivage du film
+                    $filmRepository->archiveFilm((int)$params['id']);
+                    header("Location: /films/list"); 
+                    exit;
+                }
+        }
+        else{
+            echo $this->renderer->render('film/delete.html.twig', []);
+        }
+        
     }
 }
 

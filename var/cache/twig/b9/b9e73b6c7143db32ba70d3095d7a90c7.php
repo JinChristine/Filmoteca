@@ -137,7 +137,7 @@ class __TwigTemplate_e3ba0ce2dc2a333715c3aca044077eb5 extends Template
                 yield "</td>
                         <td>";
                 // line 40
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["film"], "deleted_at", [], "any", false, false, false, 40), "format", ["d/m/Y H:i"], "method", false, false, false, 40), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["film"], "deletedAt", [], "any", false, false, false, 40), "format", ["d/m/Y H:i"], "method", false, false, false, 40), "html", null, true);
                 yield "</td>
                         <td> 
                         <form action=\"/films/update?id=";
@@ -146,7 +146,7 @@ class __TwigTemplate_e3ba0ce2dc2a333715c3aca044077eb5 extends Template
                 yield "&verif=false\" method=\"POST\" class=\"bg-light p-4 rounded shadow\">
                             <button type=\"Submit\" class=\"btn btn-outline-success\">Modifier</button>
                         </form>
-                        <form action=\"/films/delete?id=";
+                        <form action=\"/films/delete?verif=false&id=";
                 // line 45
                 yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["film"], "id", [], "any", false, false, false, 45), "html", null, true);
                 yield "\" method=\"POST\" class=\"bg-light p-4 rounded shadow\">
@@ -232,12 +232,12 @@ class __TwigTemplate_e3ba0ce2dc2a333715c3aca044077eb5 extends Template
                         <td>{{ film.synopsis }}</td>
                         <td>{{ film.createdAt.format('d/m/Y H:i') }}</td>
                         <td>{{ film.updatedAt.format('d/m/Y H:i') }}</td>
-                        <td>{{ film.deleted_at.format('d/m/Y H:i') }}</td>
+                        <td>{{ film.deletedAt.format('d/m/Y H:i') }}</td>
                         <td> 
                         <form action=\"/films/update?id={{ film.id }}&verif=false\" method=\"POST\" class=\"bg-light p-4 rounded shadow\">
                             <button type=\"Submit\" class=\"btn btn-outline-success\">Modifier</button>
                         </form>
-                        <form action=\"/films/delete?id={{ film.id }}\" method=\"POST\" class=\"bg-light p-4 rounded shadow\">
+                        <form action=\"/films/delete?verif=false&id={{ film.id }}\" method=\"POST\" class=\"bg-light p-4 rounded shadow\">
                             <button type=\"Submit\" class=\"btn btn-outline-danger\" >Supprimer</button>
                         </form>
                         </td>

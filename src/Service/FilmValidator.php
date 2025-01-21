@@ -15,5 +15,13 @@ class FilmValidator
         }
         return true;
     }
+    public function isValidId(array $data, array $films): bool
+    {
+        if (!is_numeric($data['id']) || (int)$data['id'] <= 0 || (int) $data['id'] > sizeof($films)) {
+            echo "Identifiant invalide ou manquant.";
+            return false;
+        }
+        return true;
+    }
 }
 ?>

@@ -37,12 +37,12 @@
                         <td>{{ film.synopsis }}</td>
                         <td>{{ film.createdAt.format('d/m/Y H:i') }}</td>
                         <td>{{ film.updatedAt.format('d/m/Y H:i') }}</td>
-                        <td>{{ film.deleted_at.format('d/m/Y H:i') }}</td>
+                        <td>{{ film.deletedAt.format('d/m/Y H:i') }}</td>
                         <td> 
                         <form action="/films/update?id={{ film.id }}&verif=false" method="POST" class="bg-light p-4 rounded shadow">
                             <button type="Submit" class="btn btn-outline-success">Modifier</button>
                         </form>
-                        <form action="/films/delete?id={{ film.id }}" method="POST" class="bg-light p-4 rounded shadow">
+                        <form action="/films/delete?verif=false&id={{ film.id }}" method="POST" class="bg-light p-4 rounded shadow">
                             <button type="Submit" class="btn btn-outline-danger" >Supprimer</button>
                         </form>
                         </td>

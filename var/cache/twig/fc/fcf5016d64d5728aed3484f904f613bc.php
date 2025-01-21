@@ -14,8 +14,8 @@ use Twig\Source;
 use Twig\Template;
 use Twig\TemplateWrapper;
 
-/* film/read.html.twig */
-class __TwigTemplate_fc744eadffedefc7081fe1d17ed9ba33 extends Template
+/* film/delete.html.twig */
+class __TwigTemplate_3a9edbfde08a80cd468ef1ea6a912b3b extends Template
 {
     private Source $source;
     /**
@@ -44,7 +44,7 @@ class __TwigTemplate_fc744eadffedefc7081fe1d17ed9ba33 extends Template
     protected function doDisplay(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        $this->parent = $this->loadTemplate("base.html.twig", "film/read.html.twig", 1);
+        $this->parent = $this->loadTemplate("base.html.twig", "film/delete.html.twig", 1);
         yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
     }
 
@@ -55,7 +55,7 @@ class __TwigTemplate_fc744eadffedefc7081fe1d17ed9ba33 extends Template
     public function block_title(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
-        yield "Lecture d'un film";
+        yield "Suppression d'un film";
         yield from [];
     }
 
@@ -67,15 +67,23 @@ class __TwigTemplate_fc744eadffedefc7081fe1d17ed9ba33 extends Template
     {
         $macros = $this->macros;
         // line 6
-        yield "    <main class=\"container mt-4\">
-        <form action=\"/films/read\" method=\"POST\">
-        <div class=\"form-group mb-3\">
-            <label for=\"id\" class=\"form-label\">Identifiant du film à lire</label>
-            <input type=\"text\" id=\"id\" name=\"id\" class=\"form-control\" placeholder=\"Identifiant du film\" required>
-            <button type='submit' class=\"btn btn-primary btn-lg\">Confirmer</button>
-        </div>        
-        </form>
-    </main>
+        yield "    <div class=\"container mt-5\">
+        <div class=\"row justify-content-center\">
+            <div class=\"col-12 col-md-8\">
+                <div class=\"card shadow-lg\">
+                <div class=\"mt-4 text-center\">
+                    <form method=\"POST\" action=\"/films/delete?verif=false\">
+                        <label for=\"id\" class=\"form-label\"> Quel film voulez-vous supprimer ?</label>
+                        <input type=\"text\" id=\"id\" name=\"id\" class=\"form-control\" placeholder=\"Identifiant du film\" required>
+                        <button type=\"submit\" class=\"btn btn-lg btn-danger\">
+                            <i class=\"bi bi-trash-fill\"></i> Supprimer le film
+                        </button>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
 ";
         yield from [];
     }
@@ -85,7 +93,7 @@ class __TwigTemplate_fc744eadffedefc7081fe1d17ed9ba33 extends Template
      */
     public function getTemplateName(): string
     {
-        return "film/read.html.twig";
+        return "film/delete.html.twig";
     }
 
     /**
@@ -108,18 +116,27 @@ class __TwigTemplate_fc744eadffedefc7081fe1d17ed9ba33 extends Template
     {
         return new Source("{% extends \"base.html.twig\" %}
 
-{% block title %}Lecture d'un film{% endblock %}
+{% block title %}Suppression d'un film{% endblock %}
 
 {% block content %}
-    <main class=\"container mt-4\">
-        <form action=\"/films/read\" method=\"POST\">
-        <div class=\"form-group mb-3\">
-            <label for=\"id\" class=\"form-label\">Identifiant du film à lire</label>
-            <input type=\"text\" id=\"id\" name=\"id\" class=\"form-control\" placeholder=\"Identifiant du film\" required>
-            <button type='submit' class=\"btn btn-primary btn-lg\">Confirmer</button>
-        </div>        
-        </form>
-    </main>
-{% endblock %}", "film/read.html.twig", "/var/www/filmoteca/src/views/film/read.html.twig");
+    <div class=\"container mt-5\">
+        <div class=\"row justify-content-center\">
+            <div class=\"col-12 col-md-8\">
+                <div class=\"card shadow-lg\">
+                <div class=\"mt-4 text-center\">
+                    <form method=\"POST\" action=\"/films/delete?verif=false\">
+                        <label for=\"id\" class=\"form-label\"> Quel film voulez-vous supprimer ?</label>
+                        <input type=\"text\" id=\"id\" name=\"id\" class=\"form-control\" placeholder=\"Identifiant du film\" required>
+                        <button type=\"submit\" class=\"btn btn-lg btn-danger\">
+                            <i class=\"bi bi-trash-fill\"></i> Supprimer le film
+                        </button>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+", "film/delete.html.twig", "/var/www/filmoteca/src/views/film/delete.html.twig");
     }
 }

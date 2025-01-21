@@ -35,7 +35,7 @@
                                     <td>{{ film.director }}</td>
                                     <td>{{ film.synopsis }}</td>
                                     <td>{{ film.createdAt|date('Y-m-d H:i:s') }}</td>
-                                    <td>{{ film.updatedAt|date('Y-m-d H:i:s') }}</td>
+                                    <td>{{ film.updatedAt ?  film.updatedAt|date('Y-m-d H:i:s'): '' }}</td>
                                     <td>{{ film.deletedAt ? film.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
                                 </tr>
                             </tbody>
@@ -44,7 +44,7 @@
                 </div>
                 
                 <div class="mt-4 text-center">
-                    <form method="POST" action="/films/delete">
+                    <form method="POST" action="/films/delete?archive=true&id={{ film.id }}">
                         <button type="submit" class="btn btn-lg btn-danger">
                             <i class="bi bi-trash-fill"></i> Supprimer le film
                         </button>

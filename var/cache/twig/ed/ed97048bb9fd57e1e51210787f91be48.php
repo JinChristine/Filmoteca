@@ -161,20 +161,6 @@ class __TwigTemplate_ca4ec5659587cba62a53dc3b06f8f9a7 extends Template
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["film"] ?? null), "synopsis", [], "any", false, false, false, 56), "html", null, true);
         yield "</textarea>
             </div>
-            <div class=\"mb-3\">
-                <label for=\"created_at\" class=\"form-label\">Date de création</label>
-                <input type=\"text\" class=\"form-control\" id=\"created_at\" name=\"created_at\" value=\"";
-        // line 60
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, ($context["film"] ?? null), "createdAt", [], "any", false, false, false, 60), "Y-m-d H:i:s"), "html", null, true);
-        yield "\" readonly>
-            </div>
-            <div class=\"mb-3\">
-                <label for=\"deleted_at\" class=\"form-label\">Date de suppression</label>
-                <input type=\"text\" class=\"form-control\" id=\"deleted_at\" name=\"deleted_at\" value=\"";
-        // line 64
-        ((CoreExtension::getAttribute($this->env, $this->source, ($context["film"] ?? null), "deletedAt", [], "any", false, false, false, 64)) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, ($context["film"] ?? null), "deletedAt", [], "any", false, false, false, 64), "Y-m-d H:i:s"), "html", null, true)) : (yield ""));
-        yield "\">
-            </div>
             <button type=\"submit\" class=\"btn btn-primary\">Mettre à jour le film</button>
         </form>
 
@@ -205,7 +191,7 @@ class __TwigTemplate_ca4ec5659587cba62a53dc3b06f8f9a7 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  175 => 64,  168 => 60,  161 => 56,  154 => 52,  147 => 48,  140 => 44,  133 => 40,  127 => 37,  117 => 30,  113 => 29,  109 => 28,  105 => 27,  101 => 26,  97 => 25,  93 => 24,  89 => 23,  70 => 6,  63 => 5,  52 => 3,  41 => 1,);
+        return array (  161 => 56,  154 => 52,  147 => 48,  140 => 44,  133 => 40,  127 => 37,  117 => 30,  113 => 29,  109 => 28,  105 => 27,  101 => 26,  97 => 25,  93 => 24,  89 => 23,  70 => 6,  63 => 5,  52 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -266,14 +252,6 @@ class __TwigTemplate_ca4ec5659587cba62a53dc3b06f8f9a7 extends Template
             <div class=\"mb-3\">
                 <label for=\"synopsis\" class=\"form-label\">Synopsis</label>
                 <textarea class=\"form-control\" id=\"synopsis\" name=\"synopsis\" required>{{ film.synopsis }}</textarea>
-            </div>
-            <div class=\"mb-3\">
-                <label for=\"created_at\" class=\"form-label\">Date de création</label>
-                <input type=\"text\" class=\"form-control\" id=\"created_at\" name=\"created_at\" value=\"{{ film.createdAt|date('Y-m-d H:i:s') }}\" readonly>
-            </div>
-            <div class=\"mb-3\">
-                <label for=\"deleted_at\" class=\"form-label\">Date de suppression</label>
-                <input type=\"text\" class=\"form-control\" id=\"deleted_at\" name=\"deleted_at\" value=\"{{ film.deletedAt ? film.deletedAt|date('Y-m-d H:i:s') : '' }}\">
             </div>
             <button type=\"submit\" class=\"btn btn-primary\">Mettre à jour le film</button>
         </form>

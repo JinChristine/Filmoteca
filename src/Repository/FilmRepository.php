@@ -75,7 +75,7 @@ class FilmRepository
     // Mettre à jour un film
     public function updateFilm(Film $film): void
     {
-        $query = "UPDATE film SET title = :title, year = :year, type = :type, synopsis = :synopsis, director = :director, updated_at = :updated_at WHERE id = :id";
+        $query = "UPDATE film SET title = :title, year = :year, type = :type, synopsis = :synopsis, director = :director, deleted_at = :deleted_at, created_at = :created_at, updated_at = :updated_at  WHERE id = :id";
         $result = $this->db->prepare($query);
         // Liaison des paramètres de la requête avec les attributs de de l'objet Film
         $result->bindValue(':id', $film->getId(), \PDO::PARAM_INT);
@@ -84,9 +84,15 @@ class FilmRepository
         $result->bindValue(':synopsis', $film->getSynopsis(), \PDO::PARAM_STR);
         $result->bindValue(':director', $film->getDirector(), \PDO::PARAM_STR);
         $result->bindValue(':type', $film->getType(), \PDO::PARAM_STR);   
+        if($film->getDeletedAt() == null){
+            $val = null;
+        } else{
+            $val = $film->getDeletedAt()->format('Y-m-d H:i:s');
+        }
+        $result->bindValue(':deleted_at', $val, \PDO::PARAM_STR); 
+        $result->bindValue(':created_at', $film->getCreatedAt()->format('Y-m-d H:i:s'), \PDO::PARAM_STR); 
         $result->bindValue(':updated_at', $film->getUpdatedAt() ? $film->getUpdatedAt()->format('Y-m-d H:i:s') : \PDO::PARAM_NULL);         
         $result->execute();
-
     }
 
     // Supprimer un film
@@ -99,29 +105,32 @@ class FilmRepository
         // Lier le paramètre :id à la variable $id
         $result->bindValue(':id', $id);
         // Véifier que la requête a bien été exécutée
-        if ($result->execute()){
-            echo "Suppression du film réussi";
-            
-        } else {
-            echo "Erreur de suppression";
-        }
+        $result->execute();
     }
     public function archiveFilm(int $id): void    
     {
         $film = $this->find($id);
         // Préparer la requête SQL de suppression
-        $query = "UPDATE film SET deleted_at = :delete_at WHERE id = :id";
+        $query = "UPDATE film SET title = :title, year = :year, type = :type, synopsis = :synopsis, director = :director, deleted_at = :deleted_at, created_at = :created_at, updated_at = :updated_at WHERE id = :id";
         $result = $this->db->prepare($query);
+        $result->bindValue(':title',$film->getTitle(), \PDO::PARAM_STR);
+        $result->bindValue(':year', $film->getYear(), \PDO::PARAM_STR);
+        $result->bindValue(':synopsis', $film->getSynopsis(), \PDO::PARAM_STR);
+        $result->bindValue(':director', $film->getDirector(), \PDO::PARAM_STR);
+        $result->bindValue(':type', $film->getType(), \PDO::PARAM_STR);   
         $deletedAt = (new \DateTime())->format('Y-m-d H:i:s');
-        $result->bindValue(':delete_at',$deletedAt);
+        $result->bindValue(':deleted_at',$deletedAt);
+        $result->bindValue(':created_at', $film->getCreatedAt()->format('Y-m-d H:i:s'), \PDO::PARAM_STR); 
+        if($film->getUpdatedAt() == null){
+            $val = null;
+        }
+        else{
+            $val = $film->getUpdatedAt()->format('Y-m-d H:i:s');
+        }
+        $result->bindValue(':updated_at', $val, \PDO::PARAM_NULL);         
         $result->bindValue(':id', $id);
         // Véifier que la requête a bien été exécutée
-        if ($result->execute()){
-            echo "Archivage du film réussi";
-            
-        } else {
-            echo "Erreur d'archivage";
-        }
+        $result->execute();
     }
 }
 ?>

@@ -119,7 +119,7 @@ class __TwigTemplate_fef5d0f370036b9c847720c2536a5a44 extends Template
         yield "</td>
                                     <td>";
         // line 38
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, ($context["film"] ?? null), "updatedAt", [], "any", false, false, false, 38), "Y-m-d H:i:s"), "html", null, true);
+        ((CoreExtension::getAttribute($this->env, $this->source, ($context["film"] ?? null), "updatedAt", [], "any", false, false, false, 38)) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, ($context["film"] ?? null), "updatedAt", [], "any", false, false, false, 38), "Y-m-d H:i:s"), "html", null, true)) : (yield ""));
         yield "</td>
                                     <td>";
         // line 39
@@ -132,7 +132,10 @@ class __TwigTemplate_fef5d0f370036b9c847720c2536a5a44 extends Template
                 </div>
                 
                 <div class=\"mt-4 text-center\">
-                    <form method=\"POST\" action=\"/films/delete\">
+                    <form method=\"POST\" action=\"/films/delete?archive=true&id=";
+        // line 47
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["film"] ?? null), "id", [], "any", false, false, false, 47), "html", null, true);
+        yield "\">
                         <button type=\"submit\" class=\"btn btn-lg btn-danger\">
                             <i class=\"bi bi-trash-fill\"></i> Supprimer le film
                         </button>
@@ -166,7 +169,7 @@ class __TwigTemplate_fef5d0f370036b9c847720c2536a5a44 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  126 => 39,  122 => 38,  118 => 37,  114 => 36,  110 => 35,  106 => 34,  102 => 33,  98 => 32,  70 => 6,  63 => 5,  52 => 3,  41 => 1,);
+        return array (  137 => 47,  126 => 39,  122 => 38,  118 => 37,  114 => 36,  110 => 35,  106 => 34,  102 => 33,  98 => 32,  70 => 6,  63 => 5,  52 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -208,7 +211,7 @@ class __TwigTemplate_fef5d0f370036b9c847720c2536a5a44 extends Template
                                     <td>{{ film.director }}</td>
                                     <td>{{ film.synopsis }}</td>
                                     <td>{{ film.createdAt|date('Y-m-d H:i:s') }}</td>
-                                    <td>{{ film.updatedAt|date('Y-m-d H:i:s') }}</td>
+                                    <td>{{ film.updatedAt ?  film.updatedAt|date('Y-m-d H:i:s'): '' }}</td>
                                     <td>{{ film.deletedAt ? film.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
                                 </tr>
                             </tbody>
@@ -217,7 +220,7 @@ class __TwigTemplate_fef5d0f370036b9c847720c2536a5a44 extends Template
                 </div>
                 
                 <div class=\"mt-4 text-center\">
-                    <form method=\"POST\" action=\"/films/delete\">
+                    <form method=\"POST\" action=\"/films/delete?archive=true&id={{ film.id }}\">
                         <button type=\"submit\" class=\"btn btn-lg btn-danger\">
                             <i class=\"bi bi-trash-fill\"></i> Supprimer le film
                         </button>

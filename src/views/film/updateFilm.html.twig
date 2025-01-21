@@ -55,14 +55,6 @@
                 <label for="synopsis" class="form-label">Synopsis</label>
                 <textarea class="form-control" id="synopsis" name="synopsis" required>{{ film.synopsis }}</textarea>
             </div>
-            <div class="mb-3">
-                <label for="created_at" class="form-label">Date de création</label>
-                <input type="text" class="form-control" id="created_at" name="created_at" value="{{ film.createdAt|date('Y-m-d H:i:s') }}" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="deleted_at" class="form-label">Date de suppression</label>
-                <input type="text" class="form-control" id="deleted_at" name="deleted_at" value="{{ film.deletedAt ? film.deletedAt|date('Y-m-d H:i:s') : '' }}">
-            </div>
             <button type="submit" class="btn btn-primary">Mettre à jour le film</button>
         </form>
 
