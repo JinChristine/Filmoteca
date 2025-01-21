@@ -70,7 +70,7 @@ class __TwigTemplate_3a9edbfde08a80cd468ef1ea6a912b3b extends Template
         yield "    <div class=\"container mt-5\">
         <div class=\"row justify-content-center\">
             <div class=\"col-12 col-md-8\">
-                <div class=\"card shadow-lg\">
+                <div class=\"card shadow-lg \">
                 <div class=\"mt-4 text-center\">
                     <form method=\"POST\" action=\"/films/delete?verif=false\">
                         <label for=\"id\" class=\"form-label\"> Quel film voulez-vous supprimer ?</label>
@@ -122,7 +122,7 @@ class __TwigTemplate_3a9edbfde08a80cd468ef1ea6a912b3b extends Template
     <div class=\"container mt-5\">
         <div class=\"row justify-content-center\">
             <div class=\"col-12 col-md-8\">
-                <div class=\"card shadow-lg\">
+                <div class=\"card shadow-lg \">
                 <div class=\"mt-4 text-center\">
                     <form method=\"POST\" action=\"/films/delete?verif=false\">
                         <label for=\"id\" class=\"form-label\"> Quel film voulez-vous supprimer ?</label>

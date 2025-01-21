@@ -96,14 +96,17 @@ class __TwigTemplate_94d855b7ad14df65b8cc5af393fb4159 extends Template
             </div>
             
             <div class=\"text-center\">
-                <button type=\"submit\" class=\"btn btn-primary btn-lg\">Ajouter un film</button>
+                <button type=\"submit\" class=\"btn btn-primary \">Ajouter un film</button>
             </div>
             <div class=\"text-center\">
-                <button type=\"reset\" class=\"btn btn-secondary\" onclick=\"alert('La saisie a été supprimé');\">Réinitialiser le formulaire</button>
+                <button type=\"reset\" class=\"btn btn-light\" onclick=\"alert('La saisie a été supprimé');\">Réinitialiser le formulaire</button>
+            </div>
+            <div class=\"text-center\">
+                <button type=\"button\" class=\"btn btn-dark\" id=\"cancelButton\">Annuler</button>
             </div>
         </form>
-    </div>
 
+    </div>
 ";
         yield from [];
     }
@@ -168,14 +171,17 @@ class __TwigTemplate_94d855b7ad14df65b8cc5af393fb4159 extends Template
             </div>
             
             <div class=\"text-center\">
-                <button type=\"submit\" class=\"btn btn-primary btn-lg\">Ajouter un film</button>
+                <button type=\"submit\" class=\"btn btn-primary \">Ajouter un film</button>
             </div>
             <div class=\"text-center\">
-                <button type=\"reset\" class=\"btn btn-secondary\" onclick=\"alert('La saisie a été supprimé');\">Réinitialiser le formulaire</button>
+                <button type=\"reset\" class=\"btn btn-light\" onclick=\"alert('La saisie a été supprimé');\">Réinitialiser le formulaire</button>
+            </div>
+            <div class=\"text-center\">
+                <button type=\"button\" class=\"btn btn-dark\" id=\"cancelButton\">Annuler</button>
             </div>
         </form>
-    </div>
 
+    </div>
 {% endblock %}
 ", "film/createFilm.html.twig", "/var/www/filmoteca/src/views/film/createFilm.html.twig");
     }

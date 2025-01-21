@@ -18,7 +18,8 @@ class FilmValidator
     public function isValidId(array $data, array $films): bool
     {
         if (!is_numeric($data['id']) || (int)$data['id'] <= 0 || (int) $data['id'] > sizeof($films)) {
-            echo "Identifiant invalide ou manquant.";
+            //echo "Identifiant invalide ou manquant";
+            header("Location: /films/list");
             return false;
         }
         return true;

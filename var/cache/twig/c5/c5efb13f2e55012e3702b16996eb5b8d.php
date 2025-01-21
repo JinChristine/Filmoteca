@@ -74,7 +74,7 @@ class __TwigTemplate_fef5d0f370036b9c847720c2536a5a44 extends Template
         <div class=\"row justify-content-center\">
             <div class=\"col-12 col-md-8\">
                 <div class=\"card shadow-lg\">
-                    <div class=\"card-header bg-danger text-white\">
+                    <div class=\"card-header bg-dark text-white\">
                         <h5 class=\"card-title mb-0\">Détails du film</h5>
                     </div>
                     <div class=\"card-body\">
@@ -186,7 +186,7 @@ class __TwigTemplate_fef5d0f370036b9c847720c2536a5a44 extends Template
         <div class=\"row justify-content-center\">
             <div class=\"col-12 col-md-8\">
                 <div class=\"card shadow-lg\">
-                    <div class=\"card-header bg-danger text-white\">
+                    <div class=\"card-header bg-dark text-white\">
                         <h5 class=\"card-title mb-0\">Détails du film</h5>
                     </div>
                     <div class=\"card-body\">

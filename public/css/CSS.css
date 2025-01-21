@@ -1,3 +1,24 @@
+.principal-title{
+    color: rgb(151, 15, 193) !important;
+}
+
+.custom-navbar {
+    background-color: #2d4c74 !important; 
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.nav-link:hover {
+    color: grey !important; 
+}
+
+.custom-footer{
+    background-color: #2d4c74 !important; 
+    color: white;
+}
+
 .filmoteca-logo {
     display: flex;
     align-items: center;
@@ -32,8 +53,4 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.title-color{
-    color: black;
 }

@@ -43,12 +43,7 @@ class __TwigTemplate_44dcddc9548815ed603189088bac8d8e extends Template
 \t<div class=\"container-fluid\">
 \t\t<a class=\"navbar-brand\" href=\"/\">
 \t\t\t<div class=\"filmoteca-logo\">
-\t\t\t\t<div class=\"film-strip\">
-\t\t\t\t\t<div class=\"strip-hole\"></div>
-\t\t\t\t\t<div class=\"strip-hole\"></div>
-\t\t\t\t\t<div class=\"strip-hole\"></div>
-\t\t\t\t\t<div class=\"strip-hole\"></div>
-\t\t\t\t</div>
+\t\t\t\t<img src='/image/R.png' alt='image' width=\"40\" height=\"40\">
 \t\t\t\t<div class=\"logo-text\">Filmoteca</div>
 \t\t\t</div>
 \t\t</a>
@@ -85,6 +80,12 @@ class __TwigTemplate_44dcddc9548815ed603189088bac8d8e extends Template
 \t\t\t\t\t<a class=\"nav-link\" href=\"/films/delete\">
 \t\t\t\t\t\t<i class=\"fas fa-minus-circle\"></i>
 \t\t\t\t\t\tSupprimer un film
+\t\t\t\t\t</a>
+\t\t\t\t</li>
+\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t<a class=\"nav-link\" href=\"/contact\">
+\t\t\t\t\t\t<i class=\"fas fa-envelope\"></i>
+\t\t\t\t\t\tContact
 \t\t\t\t\t</a>
 \t\t\t\t</li>
 \t\t\t</ul>
@@ -116,12 +117,7 @@ class __TwigTemplate_44dcddc9548815ed603189088bac8d8e extends Template
 \t<div class=\"container-fluid\">
 \t\t<a class=\"navbar-brand\" href=\"/\">
 \t\t\t<div class=\"filmoteca-logo\">
-\t\t\t\t<div class=\"film-strip\">
-\t\t\t\t\t<div class=\"strip-hole\"></div>
-\t\t\t\t\t<div class=\"strip-hole\"></div>
-\t\t\t\t\t<div class=\"strip-hole\"></div>
-\t\t\t\t\t<div class=\"strip-hole\"></div>
-\t\t\t\t</div>
+\t\t\t\t<img src='/image/R.png' alt='image' width=\"40\" height=\"40\">
 \t\t\t\t<div class=\"logo-text\">Filmoteca</div>
 \t\t\t</div>
 \t\t</a>
@@ -158,6 +154,12 @@ class __TwigTemplate_44dcddc9548815ed603189088bac8d8e extends Template
 \t\t\t\t\t<a class=\"nav-link\" href=\"/films/delete\">
 \t\t\t\t\t\t<i class=\"fas fa-minus-circle\"></i>
 \t\t\t\t\t\tSupprimer un film
+\t\t\t\t\t</a>
+\t\t\t\t</li>
+\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t<a class=\"nav-link\" href=\"/contact\">
+\t\t\t\t\t\t<i class=\"fas fa-envelope\"></i>
+\t\t\t\t\t\tContact
 \t\t\t\t\t</a>
 \t\t\t\t</li>
 \t\t\t</ul>

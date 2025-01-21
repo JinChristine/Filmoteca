@@ -108,7 +108,7 @@ class FilmRepository
         $result->execute();
     }
     public function archiveFilm(int $id): void    
-    {
+    { 
         $film = $this->find($id);
         // Préparer la requête SQL de suppression
         $query = "UPDATE film SET title = :title, year = :year, type = :type, synopsis = :synopsis, director = :director, deleted_at = :deleted_at, created_at = :created_at, updated_at = :updated_at WHERE id = :id";
@@ -127,7 +127,7 @@ class FilmRepository
         else{
             $val = $film->getUpdatedAt()->format('Y-m-d H:i:s');
         }
-        $result->bindValue(':updated_at', $val, \PDO::PARAM_NULL);         
+        $result->bindValue(':updated_at', $val, \PDO::PARAM_STR);         
         $result->bindValue(':id', $id);
         // Véifier que la requête a bien été exécutée
         $result->execute();

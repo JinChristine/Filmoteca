@@ -69,10 +69,15 @@ class __TwigTemplate_fc744eadffedefc7081fe1d17ed9ba33 extends Template
         // line 6
         yield "    <main class=\"container mt-4\">
         <form action=\"/films/read\" method=\"POST\">
-        <div class=\"form-group mb-3\">
-            <label for=\"id\" class=\"form-label\">Identifiant du film à lire</label>
-            <input type=\"text\" id=\"id\" name=\"id\" class=\"form-control\" placeholder=\"Identifiant du film\" required>
-            <button type='submit' class=\"btn btn-primary btn-lg\">Confirmer</button>
+        <div class=\"row justify-content-center\">
+            <div class=\"card shadow-lg \">
+                <div class=\"mt-4 text-center\">
+                    <label for=\"id\" class=\"form-label\">Identifiant du film à lire</label>
+                    <input type=\"text\" id=\"id\" name=\"id\" class=\"form-control\" placeholder=\"Identifiant du film\" required>
+                    <button type='submit' class=\"btn btn-primary btn-lg\" id=\"liveAlertBtn\">Confirmer</button>
+                    <div id=\"liveAlertPlaceholder\"></div>
+                </div>
+            </div>
         </div>        
         </form>
     </main>
@@ -113,10 +118,15 @@ class __TwigTemplate_fc744eadffedefc7081fe1d17ed9ba33 extends Template
 {% block content %}
     <main class=\"container mt-4\">
         <form action=\"/films/read\" method=\"POST\">
-        <div class=\"form-group mb-3\">
-            <label for=\"id\" class=\"form-label\">Identifiant du film à lire</label>
-            <input type=\"text\" id=\"id\" name=\"id\" class=\"form-control\" placeholder=\"Identifiant du film\" required>
-            <button type='submit' class=\"btn btn-primary btn-lg\">Confirmer</button>
+        <div class=\"row justify-content-center\">
+            <div class=\"card shadow-lg \">
+                <div class=\"mt-4 text-center\">
+                    <label for=\"id\" class=\"form-label\">Identifiant du film à lire</label>
+                    <input type=\"text\" id=\"id\" name=\"id\" class=\"form-control\" placeholder=\"Identifiant du film\" required>
+                    <button type='submit' class=\"btn btn-primary btn-lg\" id=\"liveAlertBtn\">Confirmer</button>
+                    <div id=\"liveAlertPlaceholder\"></div>
+                </div>
+            </div>
         </div>        
         </form>
     </main>

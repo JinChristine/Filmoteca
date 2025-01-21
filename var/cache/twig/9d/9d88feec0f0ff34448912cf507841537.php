@@ -39,7 +39,7 @@ class __TwigTemplate_32bc50e379056b0b92f1ca5caef3bfb9 extends Template
     {
         $macros = $this->macros;
         // line 1
-        yield "<footer class=\"bg-light text-center py-3 mt-auto\">
+        yield "<footer class=\"bg-light text-center py-3 mt-auto custom-footer\">
 \t<div class=\"container\">
 \t\t<p class=\"mb-0\">&copy;
 \t\t\t";
@@ -78,7 +78,7 @@ class __TwigTemplate_32bc50e379056b0b92f1ca5caef3bfb9 extends Template
 
     public function getSourceContext(): Source
     {
-        return new Source("<footer class=\"bg-light text-center py-3 mt-auto\">
+        return new Source("<footer class=\"bg-light text-center py-3 mt-auto custom-footer\">
 \t<div class=\"container\">
 \t\t<p class=\"mb-0\">&copy;
 \t\t\t{{ \"now\"|date(\"Y\") }}
